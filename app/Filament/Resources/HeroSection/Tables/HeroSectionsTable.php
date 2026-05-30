@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Filament\Resources\HeroSection\Tables;
+
+use Filament\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+
+class HeroSectionsTable
+{
+    public static function configure(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('title'),
+            ])
+            ->recordActions([
+                EditAction::make(),
+            ]);
+    }
+}
