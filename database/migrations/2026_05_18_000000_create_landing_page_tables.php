@@ -14,7 +14,7 @@ return new class extends Migration
         // 1. Site Configs (Single record settings)
         Schema::create('site_configs', function (Blueprint $table) {
             $table->id();
-            $table->string('site_name')->default('Suppliyam');
+            $table->string('site_name')->default('PrintHub');
             $table->string('logo')->nullable();
             $table->string('whatsapp_number')->default('628123456789');
             $table->string('email')->nullable();

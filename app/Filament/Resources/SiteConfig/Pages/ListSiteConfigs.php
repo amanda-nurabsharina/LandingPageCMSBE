@@ -15,7 +15,7 @@ class ListSiteConfigs extends ListRecords
         $record = SiteConfig::firstOrCreate([
             'id' => 1
         ], [
-            'site_name' => 'Suppliyam',
+            'site_name' => 'PrintHub',
             'whatsapp_number' => '628123456789',
         ]);
         

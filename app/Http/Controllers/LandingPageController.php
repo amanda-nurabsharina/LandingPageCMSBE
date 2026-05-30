@@ -20,9 +20,9 @@ class LandingPageController extends Controller
         $siteConfig = SiteConfig::firstOrCreate([
             'id' => 1
         ], [
-            'site_name' => 'NandaDigital',
+            'site_name' => 'PrintHub',
             'whatsapp_number' => '628123456789',
-            'email' => 'info@nandadigital.com',
+            'email' => 'info@printhub.com',
             'address' => 'Jl. Percetakan Indah No. 45, Jakarta Selatan',
             'facebook_url' => 'https://facebook.com',
             'instagram_url' => 'https://instagram.com',
@@ -130,7 +130,7 @@ class LandingPageController extends Controller
                 'client_name' => 'Yusuf Wibowo',
                 'client_role' => 'Panitia Acara Seminar',
                 'stars' => 5,
-                'content' => 'Pesan spanduk backdrop acara di NandaDigital secara mendadak tetapi bisa selesai tepat waktu. Kualitas bahan tebal dan pelayanan admin sangat ramah.',
+                'content' => 'Pesan spanduk backdrop acara di PrintHub secara mendadak tetapi bisa selesai tepat waktu. Kualitas bahan tebal dan pelayanan admin sangat ramah.',
                 'sort_order' => 3
             ]);
         }

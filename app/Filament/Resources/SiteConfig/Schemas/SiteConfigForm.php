@@ -14,7 +14,7 @@ class SiteConfigForm
         return $schema
             ->components([
                 TextInput::make('site_name')
-                    ->default('Suppliyam')
+                    ->default('PrintHub')
                     ->required(),
                 FileUpload::make('logo')
                     ->image()
