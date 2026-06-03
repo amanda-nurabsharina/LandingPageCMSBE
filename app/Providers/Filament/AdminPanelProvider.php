@@ -29,7 +29,9 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->brandName('FourplusOne CMS')
             ->login()
+            ->profile()
             ->colors([
                 'primary' => '#3c7618',
             ])
@@ -45,10 +47,12 @@ class AdminPanelProvider extends PanelProvider
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_FOOTER,
                 fn (): string => Blade::render('
-                    <form action="{{ route(\'filament.admin.auth.logout\') }}" method="POST" class="px-6 py-4 border-t border-slate-100 dark:border-slate-800">
+                    <form action="{{ route(\'filament.admin.auth.logout\') }}" method="POST" style="padding: 12px; border-top: 1px solid #e2e8f0; margin-top: auto;">
                         @csrf
-                        <button type="submit" class="flex w-full items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-white/5 hover:text-red-600 dark:hover:text-red-400 transition-colors">
-                            <x-heroicon-o-arrow-left-on-rectangle class="h-6 w-6 text-slate-400 group-hover:text-red-500" />
+                        <button type="submit" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 600; color: #4b5563; background: transparent; border: none; cursor: pointer; transition: all 0.2s ease-in-out;" onmouseover="this.style.backgroundColor=\'#fee2e2\'; this.style.color=\'#dc2626\'; this.querySelector(\'svg\').style.color=\'#dc2626\';" onmouseout="this.style.backgroundColor=\'transparent\'; this.style.color=\'#4b5563\'; this.querySelector(\'svg\').style.color=\'#9ca3af\';">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px; color: #9ca3af; transition: color 0.2s;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 013.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 07.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                            </svg>
                             <span>Logout</span>
                         </button>
                     </form>
