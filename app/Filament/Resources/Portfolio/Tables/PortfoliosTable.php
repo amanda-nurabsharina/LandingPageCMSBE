@@ -16,14 +16,17 @@ class PortfoliosTable
         return $table
             ->columns([
                 ImageColumn::make('image_path')
-                    ->label('Image')
+                    ->label('Gambar')
                     ->square(),
                 TextColumn::make('title')
+                    ->label('Nama Portofolio')
                     ->searchable(),
                 TextColumn::make('category')
+                    ->label('Kategori')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('sort_order')
+                    ->label('Urutan')
                     ->numeric()
                     ->sortable(),
             ])

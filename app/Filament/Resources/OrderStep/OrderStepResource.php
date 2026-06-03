@@ -20,6 +20,14 @@ class OrderStepResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedQueueList;
 
+    protected static ?string $navigationLabel = 'Langkah Pemesanan';
+
+    protected static ?string $modelLabel = 'Langkah Pemesanan';
+
+    protected static ?string $pluralModelLabel = 'Langkah Pemesanan';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+
     protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Schema $schema): Schema

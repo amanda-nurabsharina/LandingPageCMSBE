@@ -13,17 +13,20 @@ class PortfolioForm
         return $schema
             ->components([
                 TextInput::make('title')
+                    ->label('Nama Portofolio')
                     ->required(),
                 TextInput::make('category')
+                    ->label('Kategori')
                     ->required()
-                    ->placeholder('e.g. Stiker, Kartu, Buku, Brosur, Banner'),
+                    ->placeholder('contoh: Makanan, Minuman, Kemasan, Banner'),
                 FileUpload::make('image_path')
-                    ->label('Portfolio Image')
+                    ->label('Gambar Portofolio')
                     ->image()
                     ->directory('portfolios')
                     ->disk('public')
                     ->required(),
                 TextInput::make('sort_order')
+                    ->label('Urutan Tampilan')
                     ->required()
                     ->numeric()
                     ->default(0),

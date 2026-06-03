@@ -12,7 +12,8 @@ class WhyChooseUsTable
     {
         return $table
             ->columns([
-                TextColumn::make('title'),
+                TextColumn::make('title')
+                    ->label('Judul'),
             ])
             ->recordActions([
                 EditAction::make(),

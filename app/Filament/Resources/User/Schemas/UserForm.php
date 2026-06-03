@@ -13,20 +13,23 @@ class UserForm
         return $schema
             ->components([
                 TextInput::make('name')
+                    ->label('Nama')
                     ->required()
                     ->maxLength(255),
                 TextInput::make('email')
+                    ->label('Email')
                     ->email()
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
                 TextInput::make('password')
+                    ->label('Kata Sandi')
                     ->password()
                     ->dehydrated(fn ($state) => filled($state))
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->required(fn (string $context): bool => $context === 'create')
                     ->maxLength(255)
-                    ->placeholder(fn (string $context): ?string => $context === 'edit' ? 'Biarkan kosong jika tidak ingin mengubah password' : null),
+                    ->placeholder(fn (string $context): ?string => $context === 'edit' ? 'Biarkan kosong jika tidak ingin mengubah kata sandi' : null),
             ]);
     }
 }

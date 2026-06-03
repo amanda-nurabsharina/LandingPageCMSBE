@@ -20,9 +20,13 @@ class SiteConfigResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog;
 
-    protected static ?string $navigationLabel = 'General Settings';
+    protected static ?string $navigationLabel = 'Pengaturan Umum';
 
-    protected static ?string $modelLabel = 'General Setting';
+    protected static ?string $modelLabel = 'Pengaturan';
+
+    protected static ?string $pluralModelLabel = 'Pengaturan';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
 
     public static function form(Schema $schema): Schema
     {

@@ -15,10 +15,13 @@ class StatisticsTable
         return $table
             ->columns([
                 TextColumn::make('value')
+                    ->label('Nilai')
                     ->searchable(),
                 TextColumn::make('label')
+                    ->label('Nama Statistik')
                     ->searchable(),
                 TextColumn::make('sort_order')
+                    ->label('Urutan')
                     ->numeric()
                     ->sortable(),
             ])

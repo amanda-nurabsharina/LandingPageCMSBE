@@ -20,6 +20,14 @@ class PortfolioResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPhoto;
 
+    protected static ?string $navigationLabel = 'Portofolio';
+
+    protected static ?string $modelLabel = 'Portofolio';
+
+    protected static ?string $pluralModelLabel = 'Portofolio';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+
     protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Schema $schema): Schema

@@ -15,13 +15,17 @@ class OrderStepsTable
         return $table
             ->columns([
                 TextColumn::make('step_number')
+                    ->label('Nomor Langkah')
                     ->sortable()
                     ->numeric(),
                 TextColumn::make('title')
+                    ->label('Judul Langkah')
                     ->searchable(),
                 TextColumn::make('icon')
+                    ->label('Ikon')
                     ->searchable(),
                 TextColumn::make('sort_order')
+                    ->label('Urutan')
                     ->numeric()
                     ->sortable(),
             ])

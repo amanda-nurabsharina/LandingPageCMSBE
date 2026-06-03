@@ -24,6 +24,10 @@ class ProductResource extends Resource
 
     protected static ?string $navigationLabel = 'Produk';
 
+    protected static ?string $modelLabel = 'Produk';
+
+    protected static ?string $pluralModelLabel = 'Produk';
+
     protected static string|\UnitEnum|null $navigationGroup = 'ERP & Keuangan';
 
     public static function form(Schema $schema): Schema

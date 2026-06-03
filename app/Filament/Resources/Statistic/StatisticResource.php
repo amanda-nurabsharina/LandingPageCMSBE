@@ -20,6 +20,14 @@ class StatisticResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPresentationChartBar;
 
+    protected static ?string $navigationLabel = 'Statistik';
+
+    protected static ?string $modelLabel = 'Statistik';
+
+    protected static ?string $pluralModelLabel = 'Statistik';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+
     protected static ?string $recordTitleAttribute = 'label';
 
     public static function form(Schema $schema): Schema

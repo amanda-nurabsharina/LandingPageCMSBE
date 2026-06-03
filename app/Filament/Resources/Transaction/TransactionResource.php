@@ -22,7 +22,11 @@ class TransactionResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'category';
 
-    protected static ?string $navigationLabel = 'Keuangan Kas';
+    protected static ?string $navigationLabel = 'Pemasukan & Pengeluaran';
+
+    protected static ?string $modelLabel = 'Transaksi Kas';
+
+    protected static ?string $pluralModelLabel = 'Transaksi Kas';
 
     protected static string|\UnitEnum|null $navigationGroup = 'ERP & Keuangan';
 

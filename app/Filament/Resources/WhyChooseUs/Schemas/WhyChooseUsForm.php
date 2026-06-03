@@ -14,16 +14,18 @@ class WhyChooseUsForm
     {
         return $schema
             ->components([
-                TextInput::make('title')
+                 TextInput::make('title')
+                    ->label('Judul')
                     ->default('Mengapa Memilih Kami?')
                     ->required(),
                 Textarea::make('subtitle')
+                    ->label('Subjudul')
                     ->default('Prioritas utama kami adalah memberikan hasil cetak dengan kualitas premium, pengerjaan cepat, dan pelayanan terbaik untuk Anda.')
                     ->required()
                     ->columnSpanFull(),
                 TagsInput::make('features')
-                    ->label('Checklist Benefits (Type and press Enter)')
-                    ->placeholder('Add a benefit...')
+                    ->label('Daftar Keunggulan (Ketik dan tekan Enter)')
+                    ->placeholder('Tambah keunggulan...')
                     ->default([
                         'Kualitas cetak tajam & presisi',
                         'Tim desainer profesional',
@@ -33,7 +35,7 @@ class WhyChooseUsForm
                     ->required()
                     ->columnSpanFull(),
                 FileUpload::make('image_path')
-                    ->label('Side Mockup Image (e.g. Folded flyer)')
+                    ->label('Gambar Mockup Samping (contoh: brosur/produk)')
                     ->image()
                     ->directory('why_choose_us')
                     ->disk('public')

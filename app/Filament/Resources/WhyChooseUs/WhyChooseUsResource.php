@@ -20,9 +20,13 @@ class WhyChooseUsResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedSparkles;
 
-    protected static ?string $navigationLabel = 'Benefits Settings';
+    protected static ?string $navigationLabel = 'Keunggulan Kami';
 
-    protected static ?string $modelLabel = 'Benefits Section';
+    protected static ?string $modelLabel = 'Keunggulan';
+
+    protected static ?string $pluralModelLabel = 'Keunggulan';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
 
     public static function form(Schema $schema): Schema
     {

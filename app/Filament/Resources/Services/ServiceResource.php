@@ -20,6 +20,14 @@ class ServiceResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    protected static ?string $navigationLabel = 'Layanan';
+
+    protected static ?string $modelLabel = 'Layanan';
+
+    protected static ?string $pluralModelLabel = 'Layanan';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+
     protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Schema $schema): Schema

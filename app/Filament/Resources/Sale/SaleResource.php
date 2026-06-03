@@ -24,6 +24,10 @@ class SaleResource extends Resource
 
     protected static ?string $navigationLabel = 'Penjualan';
 
+    protected static ?string $modelLabel = 'Penjualan';
+
+    protected static ?string $pluralModelLabel = 'Penjualan';
+
     protected static string|\UnitEnum|null $navigationGroup = 'ERP & Keuangan';
 
     public static function form(Schema $schema): Schema

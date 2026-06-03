@@ -13,20 +13,24 @@ class OrderStepForm
         return $schema
             ->components([
                 TextInput::make('step_number')
-                    ->label('Step Number')
+                    ->label('Nomor Langkah')
                     ->required()
                     ->numeric(),
                 TextInput::make('title')
-                    ->placeholder('e.g. Konsultasi, Desain, Cetak')
+                    ->label('Judul Langkah')
+                    ->placeholder('contoh: Pemesanan, Pembayaran, Pengiriman')
                     ->required(),
                 Textarea::make('description')
-                    ->placeholder('Enter detailed instructions for this step...')
+                    ->label('Deskripsi Langkah')
+                    ->placeholder('Masukkan instruksi detail untuk langkah ini...')
                     ->required()
                     ->columnSpanFull(),
                 TextInput::make('icon')
-                    ->placeholder('e.g. message-square, edit, printer, check')
+                    ->label('Ikon (Lucide)')
+                    ->placeholder('contoh: shopping-cart, credit-card, truck, check')
                     ->required(),
                 TextInput::make('sort_order')
+                    ->label('Urutan Tampilan')
                     ->required()
                     ->numeric()
                     ->default(0),

@@ -13,13 +13,18 @@ class ServiceForm
         return $schema
             ->components([
                 TextInput::make('title')
+                    ->label('Nama Layanan')
                     ->required(),
                 Textarea::make('description')
+                    ->label('Deskripsi Layanan')
                     ->required()
                     ->columnSpanFull(),
                 TextInput::make('icon')
+                    ->label('Ikon (Lucide)')
+                    ->placeholder('contoh: coffee, shopping-bag, utensils')
                     ->required(),
                 TextInput::make('sort_order')
+                    ->label('Urutan Tampilan')
                     ->required()
                     ->numeric()
                     ->default(0),

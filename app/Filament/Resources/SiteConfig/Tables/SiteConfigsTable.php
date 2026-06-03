@@ -12,8 +12,10 @@ class SiteConfigsTable
     {
         return $table
             ->columns([
-                TextColumn::make('site_name'),
-                TextColumn::make('whatsapp_number'),
+                TextColumn::make('site_name')
+                    ->label('Nama Situs / Bisnis'),
+                TextColumn::make('whatsapp_number')
+                    ->label('Nomor WhatsApp'),
             ])
             ->recordActions([
                 EditAction::make(),

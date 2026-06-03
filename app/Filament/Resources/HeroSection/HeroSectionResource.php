@@ -20,9 +20,13 @@ class HeroSectionResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedHome;
 
-    protected static ?string $navigationLabel = 'Hero Settings';
+    protected static ?string $navigationLabel = 'Pengaturan Hero';
 
-    protected static ?string $modelLabel = 'Hero Section';
+    protected static ?string $modelLabel = 'Bagian Hero';
+
+    protected static ?string $pluralModelLabel = 'Bagian Hero';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
 
     public static function form(Schema $schema): Schema
     {

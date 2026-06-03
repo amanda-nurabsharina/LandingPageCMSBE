@@ -14,24 +14,29 @@ class TestimonialForm
         return $schema
             ->components([
                 TextInput::make('client_name')
+                    ->label('Nama Klien')
                     ->required(),
                 TextInput::make('client_role')
-                    ->placeholder('e.g. CEO of Company, Customer')
+                    ->label('Pekerjaan / Jabatan')
+                    ->placeholder('contoh: Pemilik Usaha, Pelanggan')
                     ->nullable(),
                 Select::make('stars')
+                    ->label('Bintang Penilaian')
                     ->options([
-                        5 => '★★★★★ (5 Stars)',
-                        4 => '★★★★ (4 Stars)',
-                        3 => '★★★ (3 Stars)',
-                        2 => '★★ (2 Stars)',
-                        1 => '★ (1 Star)',
+                        5 => '★★★★★ (5 Bintang)',
+                        4 => '★★★★ (4 Bintang)',
+                        3 => '★★★ (3 Bintang)',
+                        2 => '★★ (2 Bintang)',
+                        1 => '★ (1 Bintang)',
                     ])
                     ->default(5)
                     ->required(),
                 Textarea::make('content')
+                    ->label('Isi Testimoni')
                     ->required()
                     ->columnSpanFull(),
                 TextInput::make('sort_order')
+                    ->label('Urutan Tampilan')
                     ->required()
                     ->numeric()
                     ->default(0),

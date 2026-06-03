@@ -27,6 +27,7 @@ class ProductsTable
                     ->money('idr')
                     ->sortable(),
                 TextColumn::make('created_at')
+                    ->label('Dibuat Pada')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

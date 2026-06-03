@@ -24,6 +24,10 @@ class IngredientResource extends Resource
 
     protected static ?string $navigationLabel = 'Bahan Baku';
 
+    protected static ?string $modelLabel = 'Bahan Baku';
+
+    protected static ?string $pluralModelLabel = 'Bahan Baku';
+
     protected static string|\UnitEnum|null $navigationGroup = 'ERP & Keuangan';
 
     public static function form(Schema $schema): Schema

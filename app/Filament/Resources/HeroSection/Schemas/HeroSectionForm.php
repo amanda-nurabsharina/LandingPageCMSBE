@@ -14,29 +14,36 @@ class HeroSectionForm
         return $schema
             ->components([
                 TextInput::make('badge')
-                    ->placeholder('e.g. Percetakan Nasional')
+                    ->label('Lencana / Teks Kecil')
+                    ->placeholder('contoh: Bisnis Kuliner Terbaik')
                     ->nullable(),
                 TextInput::make('title')
+                    ->label('Judul Utama')
                     ->default('Wujudkan Ide Anda Dalam Cetakan')
                     ->required(),
                 Textarea::make('subtitle')
+                    ->label('Subjudul')
                     ->default('Temukan solusi percetakan digital berkualitas terbaik untuk spanduk, brosur, stiker, dan kemasan Anda.')
                     ->required()
                     ->columnSpanFull(),
                 TextInput::make('primary_btn_text')
+                    ->label('Teks Tombol Utama')
                     ->default('Pesan Sekarang')
                     ->nullable(),
                 TextInput::make('primary_btn_url')
-                    ->placeholder('e.g. #order or WhatsApp redirect link')
+                    ->label('URL Tombol Utama')
+                    ->placeholder('contoh: #order atau link WhatsApp')
                     ->nullable(),
                 TextInput::make('secondary_btn_text')
+                    ->label('Teks Tombol Sekunder')
                     ->default('Layanan Kami')
                     ->nullable(),
                 TextInput::make('secondary_btn_url')
-                    ->placeholder('e.g. #services')
+                    ->label('URL Tombol Sekunder')
+                    ->placeholder('contoh: #services')
                     ->nullable(),
                 FileUpload::make('image_path')
-                    ->label('Hero Banner Image')
+                    ->label('Gambar Banner Hero')
                     ->image()
                     ->directory('hero')
                     ->disk('public')

@@ -12,12 +12,15 @@ class StatisticForm
         return $schema
             ->components([
                 TextInput::make('value')
-                    ->placeholder('e.g. 500+, 10,000+, 5 Tahun')
+                    ->label('Nilai / Angka')
+                    ->placeholder('contoh: 500+, 10.000+, 5 Tahun')
                     ->required(),
                 TextInput::make('label')
-                    ->placeholder('e.g. Klien Puas, Produk Terkirim')
+                    ->label('Label / Nama Statistik')
+                    ->placeholder('contoh: Pelanggan Puas, Produk Terjual')
                     ->required(),
                 TextInput::make('sort_order')
+                    ->label('Urutan Tampilan')
                     ->required()
                     ->numeric()
                     ->default(0),
