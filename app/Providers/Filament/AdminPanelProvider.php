@@ -42,7 +42,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                // Left blank to clear the dashboard temporarily
+                \App\Filament\Widgets\FinanceOverview::class,
+                \App\Filament\Widgets\SalesChart::class,
             ])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_FOOTER,
