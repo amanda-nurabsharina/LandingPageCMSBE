@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Services\Schemas;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use App\Filament\Forms\Components\IconPicker;
 
 class ServiceForm
 {
@@ -19,9 +20,8 @@ class ServiceForm
                     ->label('Deskripsi Layanan')
                     ->required()
                     ->columnSpanFull(),
-                TextInput::make('icon')
+                IconPicker::make('icon')
                     ->label('Ikon (Lucide)')
-                    ->placeholder('contoh: coffee, shopping-bag, utensils')
                     ->required(),
                 TextInput::make('sort_order')
                     ->label('Urutan Tampilan')

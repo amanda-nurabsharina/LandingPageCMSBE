@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\OrderStep;
 use App\Models\Portfolio;
 use App\Models\Testimonial;
+use App\Models\LandingSection;
 use Illuminate\Http\JsonResponse;
 
 class LandingPageController extends Controller
@@ -27,6 +28,10 @@ class LandingPageController extends Controller
             'facebook_url' => 'https://facebook.com',
             'instagram_url' => 'https://instagram.com',
             'twitter_url' => 'https://twitter.com',
+            'primary_color' => '#881337',
+            'secondary_color' => '#0F172A',
+            'accent_color' => '#F59E0B',
+            'background_color' => '#F8FAFC',
         ]);
 
         $heroSection = HeroSection::firstOrCreate([
@@ -135,12 +140,25 @@ class LandingPageController extends Controller
             ]);
         }
 
+        // If Landing Sections are empty, seed default records
+        if (LandingSection::count() === 0) {
+            LandingSection::create(['section_key' => 'hero', 'title' => 'Hero (Judul Utama & Banner)', 'is_active' => true, 'sort_order' => 1]);
+            LandingSection::create(['section_key' => 'statistics', 'title' => 'Statistik Bar (Pencapaian)', 'is_active' => true, 'sort_order' => 2]);
+            LandingSection::create(['section_key' => 'services', 'title' => 'Layanan Cetak (Services)', 'is_active' => true, 'sort_order' => 3]);
+            LandingSection::create(['section_key' => 'benefits', 'title' => 'Keunggulan Kami (Why Choose Us)', 'is_active' => true, 'sort_order' => 4]);
+            LandingSection::create(['section_key' => 'portfolio', 'title' => 'Galeri Portofolio', 'is_active' => true, 'sort_order' => 5]);
+            LandingSection::create(['section_key' => 'timeline', 'title' => 'Langkah Pemesanan (Cara Pesan)', 'is_active' => true, 'sort_order' => 6]);
+            LandingSection::create(['section_key' => 'testimonials', 'title' => 'Testimoni Pelanggan', 'is_active' => true, 'sort_order' => 7]);
+            LandingSection::create(['section_key' => 'cta', 'title' => 'Banner Hubungi Kami (CTA)', 'is_active' => true, 'sort_order' => 8]);
+        }
+
         // Fetch dynamic lists sorted by order
         $statistics = Statistic::orderBy('sort_order')->get();
         $services = Service::orderBy('sort_order')->get();
         $orderSteps = OrderStep::orderBy('step_number')->get();
         $portfolios = Portfolio::orderBy('sort_order')->get();
         $testimonials = Testimonial::orderBy('sort_order')->get();
+        $sections = LandingSection::orderBy('sort_order')->get();
 
         // Consolidated response
         return response()->json([
@@ -154,6 +172,7 @@ class LandingPageController extends Controller
                 'order_steps' => $orderSteps,
                 'portfolios' => $portfolios,
                 'testimonials' => $testimonials,
+                'sections' => $sections,
             ]
         ]);
     }

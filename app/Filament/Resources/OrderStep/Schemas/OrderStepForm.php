@@ -5,6 +5,7 @@ namespace App\Filament\Resources\OrderStep\Schemas;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use App\Filament\Forms\Components\IconPicker;
 
 class OrderStepForm
 {
@@ -25,9 +26,8 @@ class OrderStepForm
                     ->placeholder('Masukkan instruksi detail untuk langkah ini...')
                     ->required()
                     ->columnSpanFull(),
-                TextInput::make('icon')
+                IconPicker::make('icon')
                     ->label('Ikon (Lucide)')
-                    ->placeholder('contoh: shopping-cart, credit-card, truck, check')
                     ->required(),
                 TextInput::make('sort_order')
                     ->label('Urutan Tampilan')

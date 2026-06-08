@@ -18,5 +18,9 @@ class SiteConfig extends Model
         'facebook_url',
         'instagram_url',
         'twitter_url',
+        'primary_color',
+        'secondary_color',
+        'accent_color',
+        'background_color',
     ];
 }

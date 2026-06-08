@@ -5,6 +5,8 @@ namespace App\Filament\Resources\SiteConfig\Schemas;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\ColorPicker;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class SiteConfigForm
@@ -35,18 +37,45 @@ class SiteConfigForm
                     ->label('Alamat Kantor / Toko')
                     ->nullable()
                     ->columnSpanFull(),
-                TextInput::make('facebook_url')
-                    ->label('URL Facebook')
-                    ->url()
-                    ->nullable(),
-                TextInput::make('instagram_url')
-                    ->label('URL Instagram')
-                    ->url()
-                    ->nullable(),
-                TextInput::make('twitter_url')
-                    ->label('URL Twitter / X')
-                    ->url()
-                    ->nullable(),
+                Section::make('Tautan Media Sosial')
+                    ->schema([
+                        TextInput::make('facebook_url')
+                            ->label('URL Facebook')
+                            ->url()
+                            ->nullable(),
+                        TextInput::make('instagram_url')
+                            ->label('URL Instagram')
+                            ->url()
+                            ->nullable(),
+                        TextInput::make('twitter_url')
+                            ->label('URL Twitter / X')
+                            ->url()
+                            ->nullable(),
+                    ])
+                    ->columns(3)
+                    ->columnSpanFull(),
+                Section::make('Pengaturan Warna Tema Landing Page')
+                    ->description('Sesuaikan palet warna yang akan digunakan pada landing page Anda.')
+                    ->schema([
+                        ColorPicker::make('primary_color')
+                            ->label('Warna Utama')
+                            ->default('#881337')
+                            ->required(),
+                        ColorPicker::make('secondary_color')
+                            ->label('Warna Sekunder')
+                            ->default('#0F172A')
+                            ->required(),
+                        ColorPicker::make('accent_color')
+                            ->label('Warna Aksen')
+                            ->default('#F59E0B')
+                            ->required(),
+                        ColorPicker::make('background_color')
+                            ->label('Warna Latar')
+                            ->default('#F8FAFC')
+                            ->required(),
+                    ])
+                    ->columns(4)
+                    ->columnSpanFull(),
             ]);
     }
 }
