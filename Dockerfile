@@ -52,4 +52,5 @@ RUN mkdir -p storage/app/public storage/framework/cache storage/framework/sessio
 EXPOSE 80
 
 # Start command
-CMD php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=80
+CMD php wait-for-db.php && php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=80
+
