@@ -11,12 +11,13 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libzip-dev \
     libcurl4-openssl-dev \
+    libicu-dev \
     zip \
     unzip \
     nodejs \
     npm \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo pdo_mysql mysqli mbstring exif pcntl bcmath gd zip curl xml \
+    && docker-php-ext-install pdo pdo_mysql mysqli mbstring exif pcntl bcmath gd zip curl xml intl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
