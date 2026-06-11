@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Ingredient\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Support\RawJs;
 
 class IngredientForm
 {
@@ -30,6 +31,7 @@ class IngredientForm
                     ->required()
                     ->prefix('Rp')
                     ->default(0)
+                    ->mask(RawJs::make('$money($input, \',\', \'.\', 0)'))
                     ->formatStateUsing(fn ($state) => $state !== null ? (int) $state : null)
                     ->regex('/^[0-9.]+$/')
                     ->validationMessages([

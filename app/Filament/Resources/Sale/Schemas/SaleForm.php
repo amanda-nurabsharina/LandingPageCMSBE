@@ -7,6 +7,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Support\RawJs;
 
 class SaleForm
 {
@@ -46,6 +47,7 @@ class SaleForm
                             ->label('Harga Satuan (Rp)')
                             ->required()
                             ->prefix('Rp')
+                            ->mask(RawJs::make('$money($input, \',\', \'.\', 0)'))
                             ->formatStateUsing(fn ($state) => $state !== null ? (int) $state : null)
                             ->regex('/^[0-9.]+$/')
                             ->validationMessages([

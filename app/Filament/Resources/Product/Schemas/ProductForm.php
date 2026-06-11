@@ -7,6 +7,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Support\RawJs;
 
 class ProductForm
 {
@@ -23,6 +24,7 @@ class ProductForm
                     ->required()
                     ->prefix('Rp')
                     ->default(0)
+                    ->mask(RawJs::make('$money($input, \',\', \'.\', 0)'))
                     ->formatStateUsing(fn ($state) => $state !== null ? (int) $state : null)
                     ->regex('/^[0-9.]+$/')
                     ->validationMessages([
