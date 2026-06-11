@@ -21,9 +21,14 @@ class ProductForm
                 TextInput::make('selling_price')
                     ->label('Harga Jual (Rp)')
                     ->required()
-                    ->numeric()
                     ->prefix('Rp')
-                    ->default(0),
+                    ->default(0)
+                    ->formatStateUsing(fn ($state) => $state !== null ? (int) $state : null)
+                    ->regex('/^[0-9.]+$/')
+                    ->validationMessages([
+                        'regex' => 'Harga jual hanya boleh berisi angka dan titik pemisah ribuan.',
+                    ])
+                    ->dehydrateStateUsing(fn ($state) => $state !== null ? (int) str_replace('.', '', $state) : null),
                 TextInput::make('hpp')
                     ->label('HPP Terhitung (Rp)')
                     ->disabled()

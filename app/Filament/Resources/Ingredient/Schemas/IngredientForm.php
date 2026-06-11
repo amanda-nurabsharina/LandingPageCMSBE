@@ -14,18 +14,28 @@ class IngredientForm
                 TextInput::make('name')
                     ->label('Nama Bahan')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->unique(ignoreRecord: true),
                 TextInput::make('unit')
                     ->label('Satuan Unit')
                     ->placeholder('e.g. gram, ml, pcs, sheet, meter')
                     ->required()
-                    ->maxLength(50),
+                    ->maxLength(50)
+                    ->regex('/^[a-zA-Z\s]+$/')
+                    ->validationMessages([
+                        'regex' => 'Satuan unit hanya boleh berisi huruf dan spasi.',
+                    ]),
                 TextInput::make('cost_per_unit')
                     ->label('Biaya Per Unit (Rp)')
                     ->required()
-                    ->numeric()
                     ->prefix('Rp')
-                    ->default(0),
+                    ->default(0)
+                    ->formatStateUsing(fn ($state) => $state !== null ? (int) $state : null)
+                    ->regex('/^[0-9.]+$/')
+                    ->validationMessages([
+                        'regex' => 'Biaya per unit hanya boleh berisi angka dan titik pemisah ribuan.',
+                    ])
+                    ->dehydrateStateUsing(fn ($state) => $state !== null ? (int) str_replace('.', '', $state) : null),
             ]);
     }
 }

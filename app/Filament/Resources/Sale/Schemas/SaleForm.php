@@ -45,8 +45,13 @@ class SaleForm
                         TextInput::make('unit_price')
                             ->label('Harga Satuan (Rp)')
                             ->required()
-                            ->numeric()
-                            ->prefix('Rp'),
+                            ->prefix('Rp')
+                            ->formatStateUsing(fn ($state) => $state !== null ? (int) $state : null)
+                            ->regex('/^[0-9.]+$/')
+                            ->validationMessages([
+                                'regex' => 'Harga satuan hanya boleh berisi angka dan titik pemisah ribuan.',
+                            ])
+                            ->dehydrateStateUsing(fn ($state) => $state !== null ? (int) str_replace('.', '', $state) : null),
                         TextInput::make('quantity')
                             ->label('Jumlah')
                             ->required()

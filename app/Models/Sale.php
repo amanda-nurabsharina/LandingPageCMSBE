@@ -11,6 +11,11 @@ class Sale extends Model
 
     protected $fillable = ['sale_number', 'customer_name', 'total_price', 'total_hpp', 'transaction_date'];
 
+    protected $attributes = [
+        'total_price' => 0,
+        'total_hpp' => 0,
+    ];
+
     public function items()
     {
         return $this->hasMany(SaleItem::class);
@@ -34,7 +39,7 @@ class Sale extends Model
                 [
                     'type' => 'income',
                     'category' => 'Penjualan',
-                    'amount' => $sale->total_price,
+                    'amount' => $sale->total_price ?? 0,
                     'transaction_date' => $sale->transaction_date,
                     'description' => "Penjualan invoice " . $sale->sale_number,
                 ]

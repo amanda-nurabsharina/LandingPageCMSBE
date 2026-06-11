@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Transaction;
+namespace App\Filament\Resources\Transaction\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
@@ -28,9 +28,14 @@ class TransactionForm
                     ->maxLength(255),
                 TextInput::make('amount')
                     ->label('Jumlah Uang (Rp)')
-                    ->numeric()
                     ->prefix('Rp')
-                    ->required(),
+                    ->required()
+                    ->formatStateUsing(fn ($state) => $state !== null ? (int) $state : null)
+                    ->regex('/^[0-9.]+$/')
+                    ->validationMessages([
+                        'regex' => 'Jumlah uang hanya boleh berisi angka dan titik pemisah ribuan.',
+                    ])
+                    ->dehydrateStateUsing(fn ($state) => $state !== null ? (int) str_replace('.', '', $state) : null),
                 DatePicker::make('transaction_date')
                     ->label('Tanggal Transaksi')
                     ->required()
