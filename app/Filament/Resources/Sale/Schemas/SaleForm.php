@@ -36,6 +36,7 @@ class SaleForm
                             ->relationship('product', 'name')
                             ->required()
                             ->searchable()
+                            ->preload()
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $set) {
                                 $product = \App\Models\Product::find($state);

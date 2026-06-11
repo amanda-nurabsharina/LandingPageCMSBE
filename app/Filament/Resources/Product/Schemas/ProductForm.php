@@ -47,7 +47,8 @@ class ProductForm
                             ->label('Bahan Baku')
                             ->relationship('ingredient', 'name')
                             ->required()
-                            ->searchable(),
+                            ->searchable()
+                            ->preload(),
                         TextInput::make('quantity')
                             ->label('Jumlah Penggunaan')
                             ->required()
