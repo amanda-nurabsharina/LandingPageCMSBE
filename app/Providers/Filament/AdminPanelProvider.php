@@ -45,6 +45,8 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Widgets\FinanceOverview::class,
                 \App\Filament\Widgets\SalesChart::class,
                 \App\Filament\Widgets\AnalyticsOverview::class,
+                \App\Filament\Widgets\VisitorChart::class,
+                \App\Filament\Widgets\PopularPagesWidget::class,
             ])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_FOOTER,

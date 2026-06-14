@@ -11,7 +11,9 @@ class SalesChart extends ChartWidget
 {
     protected ?string $heading = 'Analitik Penjualan & HPP (30 Hari Terakhir)';
 
-    protected static ?int $sort = 2;
+    protected static ?int $sort = 3;
+
+    protected int | string | array $columnSpan = 1;
 
     protected function getData(): array
     {

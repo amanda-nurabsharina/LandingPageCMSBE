@@ -28,6 +28,8 @@ class OrderStepResource extends Resource
 
     protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
 
+    protected static ?int $navigationSort = 6;
+
     protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Schema $schema): Schema

@@ -28,6 +28,8 @@ class SiteConfigResource extends Resource
 
     protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
 
+    protected static ?int $navigationSort = 13;
+
     public static function form(Schema $schema): Schema
     {
         return SiteConfigForm::configure($schema);

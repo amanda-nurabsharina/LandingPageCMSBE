@@ -54,6 +54,20 @@ class SiteConfigForm
                     ])
                     ->columns(3)
                     ->columnSpanFull(),
+                Section::make('Konten Formulir Kontak / Leads')
+                    ->description('Sesuaikan judul dan subjudul untuk bagian formulir hubungi kami di landing page.')
+                    ->schema([
+                        TextInput::make('contact_title')
+                            ->label('Judul Bagian Kontak')
+                            ->default('Kirimkan Pesan atau Konsultasi Gratis')
+                            ->required(),
+                        Textarea::make('contact_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Kontak')
+                            ->default('Punya pertanyaan mengenai bahan, ukuran cetakan, atau ingin mendiskusikan pesanan khusus (custom)? Isi formulir, tim ahli kami akan segera menghubungi Anda.')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
                 Section::make('Pengaturan Warna Tema Landing Page')
                     ->description('Sesuaikan palet warna yang akan digunakan pada landing page Anda.')
                     ->schema([

@@ -22,5 +22,7 @@ class SiteConfig extends Model
         'secondary_color',
         'accent_color',
         'background_color',
+        'contact_title',
+        'contact_subtitle',
     ];
 }

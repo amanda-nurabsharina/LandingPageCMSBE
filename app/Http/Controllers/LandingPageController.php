@@ -11,6 +11,7 @@ use App\Models\OrderStep;
 use App\Models\Portfolio;
 use App\Models\Testimonial;
 use App\Models\LandingSection;
+use App\Models\CtaSection;
 use Illuminate\Http\JsonResponse;
 
 class LandingPageController extends Controller
@@ -32,6 +33,8 @@ class LandingPageController extends Controller
             'secondary_color' => '#0F172A',
             'accent_color' => '#F59E0B',
             'background_color' => '#F8FAFC',
+            'contact_title' => 'Kirimkan Pesan atau Konsultasi Gratis',
+            'contact_subtitle' => 'Punya pertanyaan mengenai bahan, ukuran cetakan, atau ingin mendiskusikan pesanan khusus (custom)? Isi formulir, tim ahli kami akan segera menghubungi Anda.',
         ]);
 
         $heroSection = HeroSection::firstOrCreate([
@@ -57,6 +60,15 @@ class LandingPageController extends Controller
                 'Pengerjaan cepat & tepat waktu',
                 'Harga terjangkau & kompetitif',
             ],
+        ]);
+
+        $ctaSection = CtaSection::firstOrCreate([
+            'id' => 1
+        ], [
+            'title' => 'Siap Mencetak Ide Anda?',
+            'subtitle' => 'Yuk, mulai konsultasi gratis dengan tim ahli kami untuk mendapatkan hasil terbaik untuk bisnismu!',
+            'btn_text' => 'Pesan Sekarang',
+            'btn_url' => 'whatsapp',
         ]);
 
         // If Statistics are empty, seed some default records
@@ -152,6 +164,23 @@ class LandingPageController extends Controller
             LandingSection::create(['section_key' => 'cta', 'title' => 'Banner Hubungi Kami (CTA)', 'is_active' => true, 'sort_order' => 8]);
         }
 
+        // Ensure news and activities landing sections exist
+        LandingSection::firstOrCreate(['section_key' => 'news'], [
+            'title' => 'Berita Terbaru',
+            'is_active' => true,
+            'sort_order' => 9,
+        ]);
+        LandingSection::firstOrCreate(['section_key' => 'activities'], [
+            'title' => 'Aktifitas Terbaru',
+            'is_active' => true,
+            'sort_order' => 10,
+        ]);
+        LandingSection::firstOrCreate(['section_key' => 'contact'], [
+            'title' => 'Formulir Kontak (Leads)',
+            'is_active' => true,
+            'sort_order' => 11,
+        ]);
+
         // Fetch dynamic lists sorted by order
         $statistics = Statistic::orderBy('sort_order')->get();
         $services = Service::orderBy('sort_order')->get();
@@ -160,6 +189,10 @@ class LandingPageController extends Controller
         $testimonials = Testimonial::orderBy('sort_order')->get();
         $sections = LandingSection::orderBy('sort_order')->get();
 
+        // Fetch latest 5 news and activities
+        $latestNews = \App\Models\News::orderBy('created_at', 'desc')->limit(5)->get();
+        $latestActivities = \App\Models\Activity::orderBy('created_at', 'desc')->limit(5)->get();
+
         // Consolidated response
         return response()->json([
             'status' => 'success',
@@ -167,12 +200,15 @@ class LandingPageController extends Controller
                 'site_config' => $siteConfig,
                 'hero_section' => $heroSection,
                 'why_choose_us' => $whyChooseUs,
+                'cta_section' => $ctaSection,
                 'statistics' => $statistics,
                 'services' => $services,
                 'order_steps' => $orderSteps,
                 'portfolios' => $portfolios,
                 'testimonials' => $testimonials,
                 'sections' => $sections,
+                'news' => $latestNews,
+                'activities' => $latestActivities,
             ]
         ]);
     }

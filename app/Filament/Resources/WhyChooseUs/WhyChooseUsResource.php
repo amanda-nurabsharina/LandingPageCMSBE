@@ -28,6 +28,8 @@ class WhyChooseUsResource extends Resource
 
     protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
 
+    protected static ?int $navigationSort = 2;
+
     public static function form(Schema $schema): Schema
     {
         return WhyChooseUsForm::configure($schema);

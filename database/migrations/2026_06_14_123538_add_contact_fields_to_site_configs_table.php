@@ -1,0 +1,29 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('site_configs', function (Blueprint $table) {
+            $table->string('contact_title')->default('Kirimkan Pesan atau Konsultasi Gratis');
+            $table->text('contact_subtitle')->default('Punya pertanyaan mengenai bahan, ukuran cetakan, atau ingin mendiskusikan pesanan khusus (custom)? Isi formulir, tim ahli kami akan segera menghubungi Anda.');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('site_configs', function (Blueprint $table) {
+            $table->dropColumn(['contact_title', 'contact_subtitle']);
+        });
+    }
+};

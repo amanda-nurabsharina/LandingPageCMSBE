@@ -28,6 +28,8 @@ class HeroSectionResource extends Resource
 
     protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
 
+    protected static ?int $navigationSort = 1;
+
     public static function form(Schema $schema): Schema
     {
         return HeroSectionForm::configure($schema);
