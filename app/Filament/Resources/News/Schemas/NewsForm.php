@@ -20,6 +20,8 @@ class NewsForm
                 FileUpload::make('thumbnail')
                     ->label('Gambar Thumbnail')
                     ->image()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
+                    ->maxSize(10240)
                     ->directory('news-thumbnails')
                     ->disk('public')
                     ->required(),

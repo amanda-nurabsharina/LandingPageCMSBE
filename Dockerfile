@@ -49,6 +49,11 @@ RUN php artisan storage:link || true
 RUN chmod -R 775 storage bootstrap/cache
 RUN mkdir -p storage/app/public storage/framework/cache storage/framework/sessions storage/framework/views storage/logs
 
+# Configure PHP upload limits
+RUN echo "upload_max_filesize=20M" > /usr/local/etc/php/conf.d/uploads.ini \
+    && echo "post_max_size=25M" >> /usr/local/etc/php/conf.d/uploads.ini \
+    && echo "memory_limit=256M" >> /usr/local/etc/php/conf.d/uploads.ini
+
 # Expose port
 EXPOSE 80
 

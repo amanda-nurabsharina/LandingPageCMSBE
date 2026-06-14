@@ -20,6 +20,8 @@ class ActivityForm
                 FileUpload::make('thumbnail')
                     ->label('Gambar Thumbnail')
                     ->image()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
+                    ->maxSize(10240)
                     ->directory('activities-thumbnails')
                     ->disk('public')
                     ->required(),
