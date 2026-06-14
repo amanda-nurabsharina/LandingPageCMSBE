@@ -12,7 +12,7 @@ class PopularPagesWidget extends Widget
 
     protected int | string | array $columnSpan = 'full';
 
-    protected static string $view = 'filament.widgets.popular-pages-widget';
+    protected string $view = 'filament.widgets.popular-pages-widget';
 
     public function getPageData(): array
     {
