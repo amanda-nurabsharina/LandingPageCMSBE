@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cta_sections', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('subtitle')->nullable();
-            $table->string('btn_text')->nullable();
-            $table->string('btn_url')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('cta_sections')) {
+            Schema::create('cta_sections', function (Blueprint $table) {
+                $table->id();
+                $table->string('title');
+                $table->text('subtitle')->nullable();
+                $table->string('btn_text')->nullable();
+                $table->string('btn_url')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

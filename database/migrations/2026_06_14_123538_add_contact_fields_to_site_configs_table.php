@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('site_configs', function (Blueprint $table) {
-            $table->string('contact_title')->default('Kirimkan Pesan atau Konsultasi Gratis');
-            $table->text('contact_subtitle')->default('Punya pertanyaan mengenai bahan, ukuran cetakan, atau ingin mendiskusikan pesanan khusus (custom)? Isi formulir, tim ahli kami akan segera menghubungi Anda.');
+            if (!Schema::hasColumn('site_configs', 'contact_title')) {
+                $table->string('contact_title')->default('Kirimkan Pesan atau Konsultasi Gratis');
+            }
+            if (!Schema::hasColumn('site_configs', 'contact_subtitle')) {
+                $table->text('contact_subtitle')->default('Punya pertanyaan mengenai bahan, ukuran cetakan, atau ingin mendiskusikan pesanan khusus (custom)? Isi formulir, tim ahli kami akan segera menghubungi Anda.');
+            }
         });
     }
 

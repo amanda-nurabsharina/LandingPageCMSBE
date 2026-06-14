@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('analytics_events', function (Blueprint $table) {
-            $table->id();
-            $table->string('event_type'); // page_view, click_wa, lead_submitted
-            $table->string('page_name')->nullable(); // Home, Berita, Detail, etc.
-            $table->string('session_id');
-            $table->string('ip_address')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('analytics_events')) {
+            Schema::create('analytics_events', function (Blueprint $table) {
+                $table->id();
+                $table->string('event_type'); // page_view, click_wa, lead_submitted
+                $table->string('page_name')->nullable(); // Home, Berita, Detail, etc.
+                $table->string('session_id');
+                $table->string('ip_address')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**
