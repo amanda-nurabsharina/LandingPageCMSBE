@@ -25,4 +25,9 @@ class SiteConfig extends Model
         'contact_title',
         'contact_subtitle',
     ];
+
+    protected $attributes = [
+        'contact_title' => 'Kirimkan Pesan atau Konsultasi Gratis',
+        'contact_subtitle' => 'Punya pertanyaan mengenai bahan, ukuran cetakan, atau ingin mendiskusikan pesanan khusus (custom)? Isi formulir, tim ahli kami akan segera menghubungi Anda.',
+    ];
 }
