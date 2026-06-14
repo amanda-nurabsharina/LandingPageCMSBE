@@ -2,65 +2,37 @@
 
 namespace App\Filament\Widgets;
 
-use Filament\Widgets\TableWidget as BaseWidget;
-use Filament\Tables;
-use Filament\Tables\Table;
+use Filament\Widgets\Widget;
 use App\Models\AnalyticsEvent;
 use Illuminate\Support\Facades\DB;
 
-class PopularPagesWidget extends BaseWidget
+class PopularPagesWidget extends Widget
 {
     protected static ?int $sort = 5;
 
     protected int | string | array $columnSpan = 'full';
 
-    protected static ?string $heading = 'Halaman Terpopuler';
+    protected static string $view = 'filament.widgets.popular-pages-widget';
 
-    public function table(Table $table): Table
+    public function getPageData(): array
     {
-        return $table
-            ->query(
-                AnalyticsEvent::query()
-                    ->select(DB::raw('max(id) as id'), 'page_name', DB::raw('count(*) as views'))
-                    ->where('event_type', 'page_view')
-                    ->groupBy('page_name')
-                    ->orderByDesc(DB::raw('count(*)'))
-            )
-            ->columns([
-                Tables\Columns\TextColumn::make('page_name')
-                    ->label('Nama Halaman')
-                    ->icon(function ($state) {
-                        $lower = strtolower($state ?? '');
-                        if ($lower === 'home') {
-                            return 'heroicon-o-home';
-                        }
-                        if (str_contains($lower, 'berita') || str_contains($lower, 'news')) {
-                            return 'heroicon-o-document-text';
-                        }
-                        if (str_contains($lower, 'kegiatan') || str_contains($lower, 'aktifitas') || str_contains($lower, 'aktivitas')) {
-                            return 'heroicon-o-sparkles';
-                        }
-                        return 'heroicon-o-document';
-                    })
-                    ->iconColor(function ($state) {
-                        $lower = strtolower($state ?? '');
-                        if ($lower === 'home') {
-                            return 'primary';
-                        }
-                        if (str_contains($lower, 'berita') || str_contains($lower, 'news')) {
-                            return 'success';
-                        }
-                        if (str_contains($lower, 'kegiatan') || str_contains($lower, 'aktifitas') || str_contains($lower, 'aktivitas')) {
-                            return 'warning';
-                        }
-                        return 'gray';
-                    }),
-                Tables\Columns\TextColumn::make('views')
-                    ->label('Total Kunjungan (Views)')
-                    ->numeric()
-                    ->badge()
-                    ->color('success'),
-            ])
-            ->paginated(false);
+        try {
+            return AnalyticsEvent::query()
+                ->select('page_name', DB::raw('count(*) as views'))
+                ->where('event_type', 'page_view')
+                ->groupBy('page_name')
+                ->orderByDesc(DB::raw('count(*)'))
+                ->limit(10)
+                ->get()
+                ->map(function ($item) {
+                    return [
+                        'name' => $item->page_name ?? 'Unknown',
+                        'views' => number_format($item->views, 0, ',', '.'),
+                    ];
+                })
+                ->toArray();
+        } catch (\Exception $e) {
+            return [];
+        }
     }
 }
