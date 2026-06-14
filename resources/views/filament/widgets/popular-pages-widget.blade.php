@@ -10,12 +10,12 @@
                     <table class="fi-ta-table w-full table-auto divide-y divide-gray-200 text-start dark:divide-white/5">
                         <thead class="divide-y divide-gray-200 dark:divide-white/5">
                             <tr>
-                                <th class="fi-ta-header-cell px-3 py-3.5 sm:first-of-type:ps-6 sm:last-of-type:pe-6">
+                                <th class="fi-ta-header-cell" style="padding: 12px 16px 12px 24px; text-align: left;">
                                     <span class="group text-sm font-semibold text-gray-950 dark:text-white" style="display: inline-flex; align-items: center; gap: 4px; whitespace-nowrap: nowrap;">
                                         Nama Halaman
                                     </span>
                                 </th>
-                                <th class="fi-ta-header-cell px-3 py-3.5 sm:first-of-type:ps-6 sm:last-of-type:pe-6">
+                                <th class="fi-ta-header-cell" style="padding: 12px 24px 12px 16px; text-align: left;">
                                     <span class="group text-sm font-semibold text-gray-950 dark:text-white" style="display: inline-flex; align-items: center; gap: 4px; whitespace-nowrap: nowrap;">
                                         Total Kunjungan (Views)
                                     </span>
@@ -25,7 +25,7 @@
                         <tbody class="divide-y divide-gray-200 whitespace-nowrap dark:divide-white/5">
                             @foreach($pages as $page)
                                 <tr class="fi-ta-row transition duration-75 hover:bg-gray-50 dark:hover:bg-white/5">
-                                    <td class="fi-ta-cell px-3 py-4 sm:first-of-type:ps-6 sm:last-of-type:pe-6">
+                                    <td class="fi-ta-cell" style="padding: 16px 16px 16px 24px;">
                                         <div style="display: flex; align-items: center; gap: 8px;">
                                             <x-filament::icon
                                                 :icon="$page['icon']"
@@ -47,7 +47,7 @@
                                             </span>
                                         </div>
                                     </td>
-                                    <td class="fi-ta-cell px-3 py-4 sm:first-of-type:ps-6 sm:last-of-type:pe-6">
+                                    <td class="fi-ta-cell" style="padding: 16px 24px 16px 16px;">
                                         <x-filament::badge color="success">
                                             {{ number_format($page['views'], 0, ',', '.') }}
                                         </x-filament::badge>
