@@ -2,18 +2,18 @@
 
 namespace App\Filament\Widgets;
 
-use Filament\Widgets\TableWidget as BaseWidget;
-use Filament\Tables;
-use Filament\Tables\Table;
+use Filament\Widgets\Widget;
 use App\Models\AnalyticsEvent;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\HtmlString;
 
-class PopularPagesWidget extends BaseWidget
+class PopularPagesWidget extends Widget
 {
     protected static ?int $sort = 5;
 
     protected int | string | array $columnSpan = 'full';
+
+    protected string $view = 'filament.widgets.popular-pages-widget';
 
     public function getHeading(): string|HtmlString
     {
@@ -27,51 +27,44 @@ class PopularPagesWidget extends BaseWidget
         ');
     }
 
-    public function table(Table $table): Table
+    public function getPageData(): array
     {
-        return $table
-            ->query(
-                AnalyticsEvent::query()
-                    ->select(DB::raw('max(id) as id'), 'page_name', DB::raw('count(*) as views'))
-                    ->where('event_type', 'page_view')
-                    ->groupBy('page_name')
-                    ->orderByDesc(DB::raw('count(*)'))
-            )
-            ->columns([
-                Tables\Columns\TextColumn::make('page_name')
-                    ->label('Nama Halaman')
-                    ->icon(function ($state) {
-                        $lower = strtolower($state ?? '');
-                        if ($lower === 'home') {
-                            return 'heroicon-o-home';
-                        }
-                        if (str_contains($lower, 'berita') || str_contains($lower, 'news')) {
-                            return 'heroicon-o-document-text';
-                        }
-                        if (str_contains($lower, 'kegiatan') || str_contains($lower, 'aktifitas') || str_contains($lower, 'aktivitas') || str_contains($lower, 'dokumentasi')) {
-                            return 'heroicon-o-sparkles';
-                        }
-                        return 'heroicon-o-document';
-                    })
-                    ->iconColor(function ($state) {
-                        $lower = strtolower($state ?? '');
-                        if ($lower === 'home') {
-                            return 'primary';
-                        }
-                        if (str_contains($lower, 'berita') || str_contains($lower, 'news')) {
-                            return 'success';
-                        }
-                        if (str_contains($lower, 'kegiatan') || str_contains($lower, 'aktifitas') || str_contains($lower, 'aktivitas') || str_contains($lower, 'dokumentasi')) {
-                            return 'warning';
-                        }
-                        return 'gray';
-                    }),
-                Tables\Columns\TextColumn::make('views')
-                    ->label('Total Kunjungan (Views)')
-                    ->numeric()
-                    ->badge()
-                    ->color('success'),
-            ])
-            ->paginated(false);
+        try {
+            return AnalyticsEvent::query()
+                ->select('page_name', DB::raw('count(*) as views'))
+                ->where('event_type', 'page_view')
+                ->groupBy('page_name')
+                ->orderByDesc(DB::raw('count(*)'))
+                ->limit(10)
+                ->get()
+                ->map(function ($item) {
+                    $name = $item->page_name ?? 'Unknown';
+                    $lower = strtolower($name);
+
+                    $icon = 'heroicon-o-document';
+                    $iconColor = 'gray';
+
+                    if ($lower === 'home') {
+                        $icon = 'heroicon-o-home';
+                        $iconColor = 'primary';
+                    } elseif (str_contains($lower, 'berita') || str_contains($lower, 'news') || str_contains($lower, 'kumpulan')) {
+                        $icon = 'heroicon-o-document-text';
+                        $iconColor = 'success';
+                    } elseif (str_contains($lower, 'kegiatan') || str_contains($lower, 'aktifitas') || str_contains($lower, 'aktivitas') || str_contains($lower, 'dokumentasi')) {
+                        $icon = 'heroicon-o-sparkles';
+                        $iconColor = 'warning';
+                    }
+
+                    return [
+                        'name' => $name,
+                        'views' => $item->views,
+                        'icon' => $icon,
+                        'iconColor' => $iconColor,
+                    ];
+                })
+                ->toArray();
+        } catch (\Exception $e) {
+            return [];
+        }
     }
 }
