@@ -24,14 +24,13 @@ class PopularPagesWidget extends BaseWidget
                     ->select(DB::raw('max(id) as id'), 'page_name', DB::raw('count(*) as views'))
                     ->where('event_type', 'page_view')
                     ->groupBy('page_name')
+                    ->orderByDesc(DB::raw('count(*)'))
             )
             ->columns([
                 Tables\Columns\TextColumn::make('page_name')
                     ->label('Nama Halaman')
-                    ->searchable()
-                    ->sortable()
                     ->icon(function ($state) {
-                        $lower = strtolower($state);
+                        $lower = strtolower($state ?? '');
                         if ($lower === 'home') {
                             return 'heroicon-o-home';
                         }
@@ -44,7 +43,7 @@ class PopularPagesWidget extends BaseWidget
                         return 'heroicon-o-document';
                     })
                     ->iconColor(function ($state) {
-                        $lower = strtolower($state);
+                        $lower = strtolower($state ?? '');
                         if ($lower === 'home') {
                             return 'primary';
                         }
@@ -55,17 +54,13 @@ class PopularPagesWidget extends BaseWidget
                             return 'warning';
                         }
                         return 'gray';
-                    })
-                    ->weight('medium'),
+                    }),
                 Tables\Columns\TextColumn::make('views')
                     ->label('Total Kunjungan (Views)')
                     ->numeric()
-                    ->sortable()
                     ->badge()
-                    ->color('success')
-                    ->alignment('right'),
+                    ->color('success'),
             ])
-            ->defaultSort('views', 'desc')
             ->paginated(false);
     }
 }
