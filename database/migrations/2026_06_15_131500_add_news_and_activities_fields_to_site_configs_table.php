@@ -16,13 +16,13 @@ return new class extends Migration
                 $table->string('news_title')->default('Berita & Informasi Terkini');
             }
             if (!Schema::hasColumn('site_configs', 'news_subtitle')) {
-                $table->text('news_subtitle')->default('Ikuti perkembangan terbaru mengenai layanan, promo, dan tips seputar percetakan digital kami.');
+                $table->text('news_subtitle')->nullable();
             }
             if (!Schema::hasColumn('site_configs', 'activities_title')) {
                 $table->string('activities_title')->default('Aktifitas & Dokumentasi');
             }
             if (!Schema::hasColumn('site_configs', 'activities_subtitle')) {
-                $table->text('activities_subtitle')->default('Dokumentasi portofolio kerja, kesibukan tim cetak, serta event penting yang kami hadiri.');
+                $table->text('activities_subtitle')->nullable();
             }
         });
     }
