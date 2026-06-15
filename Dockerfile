@@ -58,5 +58,5 @@ RUN echo "upload_max_filesize=20M" > /usr/local/etc/php/conf.d/uploads.ini \
 EXPOSE 80
 
 # Start command
-CMD php wait-for-db.php && php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=80
+CMD php wait-for-db.php && php artisan migrate --force && php artisan db:seed --force && php artisan storage:link --force && php artisan serve --host=0.0.0.0 --port=80
 
