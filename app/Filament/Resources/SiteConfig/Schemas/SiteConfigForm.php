@@ -68,6 +68,34 @@ class SiteConfigForm
                             ->columnSpanFull(),
                     ])
                     ->columnSpanFull(),
+                Section::make('Konten Bagian Berita / News')
+                    ->description('Sesuaikan judul dan deskripsi bagian berita di landing page.')
+                    ->schema([
+                        TextInput::make('news_title')
+                            ->label('Judul Bagian Berita')
+                            ->default('Berita & Informasi Terkini')
+                            ->required(),
+                        Textarea::make('news_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Berita')
+                            ->default('Ikuti perkembangan terbaru mengenai layanan, promo, dan tips seputar percetakan digital kami.')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
+                Section::make('Konten Bagian Aktifitas / Kegiatan')
+                    ->description('Sesuaikan judul dan deskripsi bagian aktifitas/kegiatan di landing page.')
+                    ->schema([
+                        TextInput::make('activities_title')
+                            ->label('Judul Bagian Kegiatan')
+                            ->default('Aktifitas & Dokumentasi')
+                            ->required(),
+                        Textarea::make('activities_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Kegiatan')
+                            ->default('Dokumentasi portofolio kerja, kesibukan tim cetak, serta event penting yang kami hadiri.')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
                 Section::make('Pengaturan Warna Tema Landing Page')
                     ->description('Sesuaikan palet warna yang akan digunakan pada landing page Anda.')
                     ->schema([

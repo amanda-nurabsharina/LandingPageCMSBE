@@ -24,6 +24,10 @@ class SiteConfig extends Model
         'background_color',
         'contact_title',
         'contact_subtitle',
+        'news_title',
+        'news_subtitle',
+        'activities_title',
+        'activities_subtitle',
     ];
 
     protected $attributes = [
