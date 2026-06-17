@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Lead\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -33,6 +34,7 @@ class LeadsTable
             ->filters([])
             ->recordActions([
                 EditAction::make()->label('Buka Pesan'),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
