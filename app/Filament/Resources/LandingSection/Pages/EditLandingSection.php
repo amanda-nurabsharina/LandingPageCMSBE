@@ -15,4 +15,9 @@ class EditLandingSection extends EditRecord
             // No DeleteAction to prevent deleting fixed system sections
         ];
     }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

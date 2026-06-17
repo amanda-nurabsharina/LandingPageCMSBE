@@ -8,4 +8,9 @@ use Filament\Resources\Pages\EditRecord;
 class EditIngredient extends EditRecord
 {
     protected static string $resource = IngredientResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
