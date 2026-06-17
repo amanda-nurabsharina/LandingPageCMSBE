@@ -16,7 +16,8 @@ class OrderStepForm
                 TextInput::make('step_number')
                     ->label('Nomor Langkah')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->unique(ignoreRecord: true),
                 TextInput::make('title')
                     ->label('Judul Langkah')
                     ->placeholder('contoh: Pemesanan, Pembayaran, Pengiriman')
@@ -33,7 +34,8 @@ class OrderStepForm
                     ->label('Urutan Tampilan')
                     ->required()
                     ->numeric()
-                    ->default(0),
+                    ->default(0)
+                    ->unique(ignoreRecord: true),
             ]);
     }
 }

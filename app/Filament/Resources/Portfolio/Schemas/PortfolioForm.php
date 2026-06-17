@@ -29,7 +29,8 @@ class PortfolioForm
                     ->label('Urutan Tampilan')
                     ->required()
                     ->numeric()
-                    ->default(0),
+                    ->default(0)
+                    ->unique(ignoreRecord: true),
             ]);
     }
 }
