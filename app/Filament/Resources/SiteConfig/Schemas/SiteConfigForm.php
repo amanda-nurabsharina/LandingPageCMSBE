@@ -96,6 +96,62 @@ class SiteConfigForm
                             ->columnSpanFull(),
                     ])
                     ->columnSpanFull(),
+                Section::make('Konten Bagian Layanan / Services')
+                    ->description('Sesuaikan judul dan deskripsi bagian layanan di landing page.')
+                    ->schema([
+                        TextInput::make('services_title')
+                            ->label('Judul Bagian Layanan')
+                            ->default('Solusi Percetakan Cetak Custom Lengkap')
+                            ->required(),
+                        Textarea::make('services_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Layanan')
+                            ->default('Kami siap mencetak berbagai produk kebutuhan branding, promosi, dan bisnis Anda dengan mesin berteknologi canggih.')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
+                Section::make('Konten Bagian Portofolio')
+                    ->description('Sesuaikan judul dan deskripsi bagian portofolio di landing page.')
+                    ->schema([
+                        TextInput::make('portfolio_title')
+                            ->label('Judul Bagian Portofolio')
+                            ->default('Hasil Cetakan Terbaik Kami')
+                            ->required(),
+                        Textarea::make('portfolio_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Portofolio')
+                            ->default('Berikut adalah beberapa galeri foto produk cetakan yang telah diselesaikan untuk klien-klien kami yang puas.')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
+                Section::make('Konten Bagian Cara Pesan / Timeline')
+                    ->description('Sesuaikan judul dan deskripsi bagian cara pemesanan di landing page.')
+                    ->schema([
+                        TextInput::make('order_steps_title')
+                            ->label('Judul Bagian Cara Pesan')
+                            ->default('Cara Pemesanan Sangat Mudah')
+                            ->required(),
+                        Textarea::make('order_steps_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Cara Pesan')
+                            ->default('Cukup selesaikan 4 langkah mudah berikut untuk mewujudkan ide Anda dalam hasil cetak siap pakai.')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
+                Section::make('Konten Bagian Testimoni')
+                    ->description('Sesuaikan judul dan deskripsi bagian testimoni di landing page.')
+                    ->schema([
+                        TextInput::make('testimonials_title')
+                            ->label('Judul Bagian Testimoni')
+                            ->default('Apa Kata Pelanggan Setia Kami')
+                            ->required(),
+                        Textarea::make('testimonials_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Testimoni')
+                            ->default('Kelegaan dan kepuasan pelanggan adalah komitmen utama kami. Simak penilaian langsung mereka.')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
                 Section::make('Pengaturan Warna Tema Landing Page')
                     ->description('Sesuaikan palet warna yang akan digunakan pada landing page Anda.')
                     ->schema([
