@@ -47,6 +47,7 @@ class LandingPageController extends Controller
             'order_steps_subtitle' => 'Cukup selesaikan 4 langkah mudah berikut untuk mewujudkan ide Anda dalam hasil cetak siap pakai.',
             'testimonials_title' => 'Apa Kata Pelanggan Setia Kami',
             'testimonials_subtitle' => 'Kelegaan dan kepuasan pelanggan adalah komitmen utama kami. Simak penilaian langsung mereka.',
+            'footer_description' => 'Menyediakan layanan cetak banner, stiker kemasan, brosur, kartu nama, dan aneka merchandise digital berkualitas tinggi dengan pengerjaan kilat.',
         ]);
 
         $heroSection = HeroSection::firstOrCreate([

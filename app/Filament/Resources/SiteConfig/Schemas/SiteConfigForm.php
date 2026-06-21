@@ -152,6 +152,16 @@ class SiteConfigForm
                             ->columnSpanFull(),
                     ])
                     ->columnSpanFull(),
+                Section::make('Konten Bagian Footer')
+                    ->description('Sesuaikan deskripsi pada bagian kaki (footer) landing page.')
+                    ->schema([
+                        Textarea::make('footer_description')
+                            ->label('Deskripsi Footer')
+                            ->default('Menyediakan layanan cetak banner, stiker kemasan, brosur, kartu nama, dan aneka merchandise digital berkualitas tinggi dengan pengerjaan kilat.')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
                 Section::make('Pengaturan Warna Tema Landing Page')
                     ->description('Sesuaikan palet warna yang akan digunakan pada landing page Anda.')
                     ->schema([
