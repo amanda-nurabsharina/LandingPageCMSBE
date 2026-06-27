@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('site_configs', function (Blueprint $table) {
-            $table->string('work_steps_title')->nullable()->default('How We Work');
-            $table->text('work_steps_subtitle')->nullable()->default('A seamless process designed to save you time and ensure top-quality results');
+            if (!Schema::hasColumn('site_configs', 'work_steps_title')) {
+                $table->string('work_steps_title')->nullable()->default('How We Work');
+            }
+            if (!Schema::hasColumn('site_configs', 'work_steps_subtitle')) {
+                $table->string('work_steps_subtitle', 2000)->nullable()->default('A seamless process designed to save you time and ensure top-quality results');
+            }
         });
     }
 
@@ -23,7 +27,16 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('site_configs', function (Blueprint $table) {
-            $table->dropColumn(['work_steps_title', 'work_steps_subtitle']);
+            $columns = [];
+            if (Schema::hasColumn('site_configs', 'work_steps_title')) {
+                $columns[] = 'work_steps_title';
+            }
+            if (Schema::hasColumn('site_configs', 'work_steps_subtitle')) {
+                $columns[] = 'work_steps_subtitle';
+            }
+            if (!empty($columns)) {
+                $table->dropColumn($columns);
+            }
         });
     }
 };

@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('site_configs', function (Blueprint $table) {
-            $table->string('service_premium_title')->nullable()->default('Services We Provide');
-            $table->text('service_premium_subtitle')->nullable()->default('Tailored solutions for every need—whether scaling an enterprise or celebrating a milestone.');
+            if (!Schema::hasColumn('site_configs', 'service_premium_title')) {
+                $table->string('service_premium_title')->nullable()->default('Services We Provide');
+            }
+            if (!Schema::hasColumn('site_configs', 'service_premium_subtitle')) {
+                $table->string('service_premium_subtitle', 2000)->nullable()->default('Tailored solutions for every need—whether scaling an enterprise or celebrating a milestone.');
+            }
         });
     }
 
@@ -23,7 +27,16 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('site_configs', function (Blueprint $table) {
-            $table->dropColumn(['service_premium_title', 'service_premium_subtitle']);
+            $columns = [];
+            if (Schema::hasColumn('site_configs', 'service_premium_title')) {
+                $columns[] = 'service_premium_title';
+            }
+            if (Schema::hasColumn('site_configs', 'service_premium_subtitle')) {
+                $columns[] = 'service_premium_subtitle';
+            }
+            if (!empty($columns)) {
+                $table->dropColumn($columns);
+            }
         });
     }
 };
