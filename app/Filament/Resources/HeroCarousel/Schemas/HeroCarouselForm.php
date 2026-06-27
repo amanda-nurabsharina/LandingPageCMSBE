@@ -37,11 +37,16 @@ class HeroCarouselForm
                     ->label('Tujuan Tombol Utama')
                     ->options([
                         'whatsapp' => 'Hubungi WhatsApp',
+                        '#about' => 'Bagian Tentang Kami (About)',
                         '#services' => 'Bagian Layanan (Services)',
+                        '#services_premium' => 'Bagian Layanan Premium',
                         '#benefits' => 'Bagian Keunggulan (Why Choose Us)',
                         '#portfolio' => 'Bagian Portofolio',
                         '#timeline' => 'Bagian Cara Pesan (Order Timeline)',
                         '#testimonials' => 'Bagian Testimoni',
+                        '#news' => 'Bagian Berita & Informasi (News)',
+                        '#activities' => 'Bagian Kegiatan Kami (Activities)',
+                        '#contact' => 'Bagian Formulir Kontak',
                     ])
                     ->default('whatsapp')
                     ->required(),
@@ -53,11 +58,16 @@ class HeroCarouselForm
                     ->label('Tujuan Tombol Sekunder')
                     ->options([
                         'whatsapp' => 'Hubungi WhatsApp',
+                        '#about' => 'Bagian Tentang Kami (About)',
                         '#services' => 'Bagian Layanan (Services)',
+                        '#services_premium' => 'Bagian Layanan Premium',
                         '#benefits' => 'Bagian Keunggulan (Why Choose Us)',
                         '#portfolio' => 'Bagian Portofolio',
                         '#timeline' => 'Bagian Cara Pesan (Order Timeline)',
                         '#testimonials' => 'Bagian Testimoni',
+                        '#news' => 'Bagian Berita & Informasi (News)',
+                        '#activities' => 'Bagian Kegiatan Kami (Activities)',
+                        '#contact' => 'Bagian Formulir Kontak',
                     ])
                     ->default('#services')
                     ->required(),
