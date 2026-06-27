@@ -16,7 +16,7 @@ return new class extends Migration
                 $table->string('about_title')->nullable()->default('Innovation meets precision.');
             }
             if (!Schema::hasColumn('site_configs', 'about_subtitle')) {
-                $table->text('about_subtitle')->nullable()->default('Welcome to Fourplusone. We are a premier IT Software House dedicated to bridging the gap between complex business needs and elegant digital experiences');
+                $table->string('about_subtitle', 2000)->nullable()->default('Welcome to Fourplusone. We are a premier IT Software House dedicated to bridging the gap between complex business needs and elegant digital experiences');
             }
         });
     }
