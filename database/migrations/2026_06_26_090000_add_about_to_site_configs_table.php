@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('site_configs', function (Blueprint $table) {
-            $table->string('about_title')->nullable()->default('Innovation meets precision.');
-            $table->text('about_subtitle')->nullable()->default('Welcome to Fourplusone. We are a premier IT Software House dedicated to bridging the gap between complex business needs and elegant digital experiences');
+            if (!Schema::hasColumn('site_configs', 'about_title')) {
+                $table->string('about_title')->nullable()->default('Innovation meets precision.');
+            }
+            if (!Schema::hasColumn('site_configs', 'about_subtitle')) {
+                $table->text('about_subtitle')->nullable()->default('Welcome to Fourplusone. We are a premier IT Software House dedicated to bridging the gap between complex business needs and elegant digital experiences');
+            }
         });
     }
 
@@ -23,7 +27,16 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('site_configs', function (Blueprint $table) {
-            $table->dropColumn(['about_title', 'about_subtitle']);
+            $columns = [];
+            if (Schema::hasColumn('site_configs', 'about_title')) {
+                $columns[] = 'about_title';
+            }
+            if (Schema::hasColumn('site_configs', 'about_subtitle')) {
+                $columns[] = 'about_subtitle';
+            }
+            if (!empty($columns)) {
+                $table->dropColumn($columns);
+            }
         });
     }
 };
