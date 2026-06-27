@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\SiteConfig;
 use App\Models\HeroSection;
+use App\Models\HeroBackground;
+use App\Models\HeroCarousel;
 use App\Models\WhyChooseUs;
 use App\Models\Statistic;
 use App\Models\Service;
@@ -12,6 +14,9 @@ use App\Models\Portfolio;
 use App\Models\Testimonial;
 use App\Models\LandingSection;
 use App\Models\CtaSection;
+use App\Models\AboutItem;
+use App\Models\ServicePremium;
+use App\Models\WorkStep;
 use Illuminate\Http\JsonResponse;
 
 class LandingPageController extends Controller
@@ -48,6 +53,12 @@ class LandingPageController extends Controller
             'testimonials_title' => 'Apa Kata Pelanggan Setia Kami',
             'testimonials_subtitle' => 'Kelegaan dan kepuasan pelanggan adalah komitmen utama kami. Simak penilaian langsung mereka.',
             'footer_description' => 'Menyediakan layanan cetak banner, stiker kemasan, brosur, kartu nama, dan aneka merchandise digital berkualitas tinggi dengan pengerjaan kilat.',
+            'about_title' => 'Innovation meets precision.',
+            'about_subtitle' => 'Welcome to Fourplusone. We are a premier IT Software House dedicated to bridging the gap between complex business needs and elegant digital experiences',
+            'service_premium_title' => 'Services We Provide',
+            'service_premium_subtitle' => 'Tailored solutions for every need—whether scaling an enterprise or celebrating a milestone.',
+            'work_steps_title' => 'How We Work',
+            'work_steps_subtitle' => 'A seamless process designed to save you time and ensure top-quality results',
         ]);
 
         $heroSection = HeroSection::firstOrCreate([
@@ -60,6 +71,31 @@ class LandingPageController extends Controller
             'primary_btn_url' => '#order',
             'secondary_btn_text' => 'Layanan Kami',
             'secondary_btn_url' => '#services',
+        ]);
+
+        $heroBackground = HeroBackground::firstOrCreate([
+            'id' => 1
+        ], [
+            'badge' => 'Bisnis Digital',
+            'title' => 'Wujudkan Ide Anda Dalam Cetakan',
+            'subtitle' => 'Temukan solusi percetakan digital berkualitas terbaik untuk spanduk, brosur, stiker, dan kemasan Anda.',
+            'primary_btn_text' => 'Pesan Sekarang',
+            'primary_btn_url' => '#order',
+            'secondary_btn_text' => 'Layanan Kami',
+            'secondary_btn_url' => '#services',
+        ]);
+
+        $heroCarousel = HeroCarousel::firstOrCreate([
+            'id' => 1
+        ], [
+            'badge' => 'Promo Unggulan',
+            'title' => 'Wujudkan Ide Anda Dalam Cetakan',
+            'subtitle' => 'Temukan solusi percetakan digital berkualitas terbaik untuk spanduk, brosur, stiker, dan kemasan Anda.',
+            'primary_btn_text' => 'Pesan Sekarang',
+            'primary_btn_url' => '#order',
+            'secondary_btn_text' => 'Layanan Kami',
+            'secondary_btn_url' => '#services',
+            'carousel_images' => [],
         ]);
 
         $whyChooseUs = WhyChooseUs::firstOrCreate([
@@ -193,6 +229,109 @@ class LandingPageController extends Controller
             'is_active' => true,
             'sort_order' => 11,
         ]);
+        LandingSection::firstOrCreate(['section_key' => 'hero_background'], [
+            'title' => 'Hero Background Image (Latar Penuh)',
+            'is_active' => false,
+            'sort_order' => 12,
+        ]);
+        LandingSection::firstOrCreate(['section_key' => 'hero_carousel'], [
+            'title' => 'Hero Carousel Image (Slideshow)',
+            'is_active' => false,
+            'sort_order' => 13,
+        ]);
+        LandingSection::firstOrCreate(['section_key' => 'about'], [
+            'title' => 'Tentang Kami',
+            'is_active' => true,
+            'sort_order' => 14,
+        ]);
+        LandingSection::firstOrCreate(['section_key' => 'services_premium'], [
+            'title' => 'Layanan Premium (Grid)',
+            'is_active' => true,
+            'sort_order' => 15,
+        ]);
+        LandingSection::firstOrCreate(['section_key' => 'work_steps'], [
+            'title' => 'Cara Kerja (Grid)',
+            'is_active' => true,
+            'sort_order' => 16,
+        ]);
+
+        // If About Items are empty, seed default records
+        if (AboutItem::count() === 0) {
+            AboutItem::create([
+                'title' => 'Innovation at Our Core',
+                'description' => 'We design and develop cutting-edge software solutions tailored to your business needs, ensuring high scalability and modern performance.',
+                'sort_order' => 1
+            ]);
+            AboutItem::create([
+                'title' => 'Precision & Performance',
+                'description' => 'Our engineering processes guarantee bug-free, high-performance applications built with clean, maintainable architecture.',
+                'sort_order' => 2
+            ]);
+            AboutItem::create([
+                'title' => 'Seamless Integration',
+                'description' => 'Connect your systems, APIs, and workflows seamlessly with robust security and zero friction.',
+                'sort_order' => 3
+            ]);
+        }
+
+        // If Service Premiums are empty, seed default records
+        if (ServicePremium::count() === 0) {
+            ServicePremium::create([
+                'title' => 'Mobile Development',
+                'description' => 'iOS & Android native and hybrid applications designed for exceptional user experiences',
+                'button_text' => 'Start Project',
+                'button_url' => 'whatsapp',
+                'sort_order' => 1,
+            ]);
+            ServicePremium::create([
+                'title' => 'Website Development',
+                'description' => 'High-performance landing pages, corporate websites, and modern web applications.',
+                'button_text' => 'Start Project',
+                'button_url' => 'whatsapp',
+                'sort_order' => 2,
+                'image_path' => null,
+            ]);
+            ServicePremium::create([
+                'title' => 'Custom Dashboards',
+                'description' => 'Data management, ERP, and CRM solutions tailored to streamline your business operations.',
+                'button_text' => 'Start Project',
+                'button_url' => 'whatsapp',
+                'sort_order' => 3,
+                'image_path' => null,
+            ]);
+            ServicePremium::create([
+                'title' => 'Wedding Templates',
+                'description' => 'Aesthetic, interactive digital invitations to make your special day unforgettable.',
+                'button_text' => 'Start Project',
+                'button_url' => 'whatsapp',
+                'sort_order' => 4,
+                'image_path' => null,
+            ]);
+        }
+
+        // If Work Steps are empty, seed default records
+        if (WorkStep::count() === 0) {
+            WorkStep::create([
+                'title' => 'Consultation',
+                'description' => 'Share your vision, requirements, and business goals with our expert team.',
+                'sort_order' => 1,
+            ]);
+            WorkStep::create([
+                'title' => 'Design & Planning',
+                'description' => 'We map out the UX flow and visual architecture tailored perfectly to your brand.',
+                'sort_order' => 2,
+            ]);
+            WorkStep::create([
+                'title' => 'Launch & Support',
+                'description' => 'Seamless deployment and ongoing maintenance to keep your product running perfectly.',
+                'sort_order' => 3,
+            ]);
+            WorkStep::create([
+                'title' => 'Fast Delivery',
+                'description' => 'Rapid development with regular updates and continuous feedback loops.',
+                'sort_order' => 4,
+            ]);
+        }
 
         // Fetch dynamic lists sorted by order
         $statistics = Statistic::orderBy('sort_order')->get();
@@ -201,6 +340,9 @@ class LandingPageController extends Controller
         $portfolios = Portfolio::orderBy('sort_order')->get();
         $testimonials = Testimonial::orderBy('sort_order')->get();
         $sections = LandingSection::orderBy('sort_order')->get();
+        $aboutItems = AboutItem::orderBy('sort_order')->get();
+        $servicePremiums = ServicePremium::orderBy('sort_order')->get();
+        $workSteps = WorkStep::orderBy('sort_order')->get();
 
         // Fetch latest 5 news and activities
         $latestNews = \App\Models\News::orderBy('created_at', 'desc')->limit(5)->get();
@@ -212,6 +354,8 @@ class LandingPageController extends Controller
             'data' => [
                 'site_config' => $siteConfig,
                 'hero_section' => $heroSection,
+                'hero_background' => $heroBackground,
+                'hero_carousel' => $heroCarousel,
                 'why_choose_us' => $whyChooseUs,
                 'cta_section' => $ctaSection,
                 'statistics' => $statistics,
@@ -220,6 +364,9 @@ class LandingPageController extends Controller
                 'portfolios' => $portfolios,
                 'testimonials' => $testimonials,
                 'sections' => $sections,
+                'about_items' => $aboutItems,
+                'service_premiums' => $servicePremiums,
+                'work_steps' => $workSteps,
                 'news' => $latestNews,
                 'activities' => $latestActivities,
             ]

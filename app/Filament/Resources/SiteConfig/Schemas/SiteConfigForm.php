@@ -162,6 +162,48 @@ class SiteConfigForm
                             ->columnSpanFull(),
                     ])
                     ->columnSpanFull(),
+                Section::make('Konten Bagian Tentang Kami / About Us')
+                    ->description('Sesuaikan judul dan deskripsi bagian Tentang Kami.')
+                    ->schema([
+                        TextInput::make('about_title')
+                            ->label('Judul Bagian Tentang Kami')
+                            ->default('Innovation meets precision.')
+                            ->required(),
+                        Textarea::make('about_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Tentang Kami')
+                            ->default('Welcome to Fourplusone. We are a premier IT Software House dedicated to bridging the gap between complex business needs and elegant digital experiences')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
+                Section::make('Konten Bagian Layanan Premium')
+                    ->description('Sesuaikan judul dan deskripsi bagian Layanan Premium.')
+                    ->schema([
+                        TextInput::make('service_premium_title')
+                            ->label('Judul Bagian Layanan Premium')
+                            ->default('Services We Provide')
+                            ->required(),
+                        Textarea::make('service_premium_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Layanan Premium')
+                            ->default('Tailored solutions for every need—whether scaling an enterprise or celebrating a milestone.')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
+                Section::make('Konten Bagian Cara Kerja')
+                    ->description('Sesuaikan judul dan deskripsi bagian Cara Kerja.')
+                    ->schema([
+                        TextInput::make('work_steps_title')
+                            ->label('Judul Bagian Cara Kerja')
+                            ->default('How We Work')
+                            ->required(),
+                        Textarea::make('work_steps_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Cara Kerja')
+                            ->default('A seamless process designed to save you time and ensure top-quality results')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
                 Section::make('Pengaturan Warna Tema Landing Page')
                     ->description('Sesuaikan palet warna yang akan digunakan pada landing page Anda.')
                     ->schema([

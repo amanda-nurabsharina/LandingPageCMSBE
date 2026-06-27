@@ -20,11 +20,11 @@ class HeroSectionResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedHome;
 
-    protected static ?string $navigationLabel = 'Pengaturan Hero';
+    protected static ?string $navigationLabel = 'Basic Hero';
 
-    protected static ?string $modelLabel = 'Bagian Hero';
+    protected static ?string $modelLabel = 'Basic Hero';
 
-    protected static ?string $pluralModelLabel = 'Bagian Hero';
+    protected static ?string $pluralModelLabel = 'Basic Hero';
 
     protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
 

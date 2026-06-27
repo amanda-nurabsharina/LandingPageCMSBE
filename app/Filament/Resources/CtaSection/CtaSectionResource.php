@@ -28,7 +28,7 @@ class CtaSectionResource extends Resource
 
     protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
 
-    protected static ?int $navigationSort = 10;
+    protected static ?int $navigationSort = 11;
 
     protected static ?string $recordTitleAttribute = 'title';
 

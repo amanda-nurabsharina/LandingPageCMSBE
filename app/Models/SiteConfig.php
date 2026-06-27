@@ -37,6 +37,12 @@ class SiteConfig extends Model
         'testimonials_title',
         'testimonials_subtitle',
         'footer_description',
+        'about_title',
+        'about_subtitle',
+        'service_premium_title',
+        'service_premium_subtitle',
+        'work_steps_title',
+        'work_steps_subtitle',
     ];
 
     protected $attributes = [
@@ -55,5 +61,11 @@ class SiteConfig extends Model
         'testimonials_title' => 'Apa Kata Pelanggan Setia Kami',
         'testimonials_subtitle' => 'Kelegaan dan kepuasan pelanggan adalah komitmen utama kami. Simak penilaian langsung mereka.',
         'footer_description' => 'Menyediakan layanan cetak banner, stiker kemasan, brosur, kartu nama, dan aneka merchandise digital berkualitas tinggi dengan pengerjaan kilat.',
+        'about_title' => 'Innovation meets precision.',
+        'about_subtitle' => 'Welcome to Fourplusone. We are a premier IT Software House dedicated to bridging the gap between complex business needs and elegant digital experiences',
+        'service_premium_title' => 'Services We Provide',
+        'service_premium_subtitle' => 'Tailored solutions for every need—whether scaling an enterprise or celebrating a milestone.',
+        'work_steps_title' => 'How We Work',
+        'work_steps_subtitle' => 'A seamless process designed to save you time and ensure top-quality results',
     ];
 }
