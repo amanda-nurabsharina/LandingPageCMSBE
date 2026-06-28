@@ -6,6 +6,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Repeater;
 use Filament\Schemas\Schema;
 
 class HeroCarouselForm
@@ -71,14 +72,34 @@ class HeroCarouselForm
                     ])
                     ->default('#services')
                     ->required(),
-                FileUpload::make('carousel_images')
-                    ->label('Gambar Carousel / Slideshow')
-                    ->image()
-                    ->multiple()
-                    ->reorderable()
-                    ->directory('hero_carousel')
-                    ->disk('public')
-                    ->nullable(),
+                Repeater::make('carousel_images')
+                    ->label('Item Carousel / Produk Unggulan')
+                    ->schema([
+                        FileUpload::make('image')
+                            ->label('Gambar Produk')
+                            ->image()
+                            ->directory('hero_carousel')
+                            ->disk('public')
+                            ->required(),
+                        TextInput::make('title')
+                            ->label('Nama Produk / Label Utama')
+                            ->placeholder('contoh: ENGLISH BREAKFAST')
+                            ->required(),
+                        TextInput::make('subtitle')
+                            ->label('Keterangan / Sub-label')
+                            ->placeholder('contoh: Strong & Malty')
+                            ->nullable(),
+                        TextInput::make('footer')
+                            ->label('Keterangan Kaki (Harga/Bintang)')
+                            ->placeholder('contoh: dari Rp 50.000 | ★★★★★')
+                            ->nullable(),
+                    ])
+                    ->collapsible()
+                    ->defaultItems(1)
+                    ->columns(2)
+                    ->grid(2)
+                    ->nullable()
+                    ->columnSpanFull(),
             ]);
     }
 }

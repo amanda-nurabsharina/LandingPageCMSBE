@@ -19,7 +19,7 @@ class LeadForm
                     ->label('Nomor Telepon/WA')
                     ->disabled()
                     ->suffixAction(
-                        \Filament\Forms\Components\Actions\Action::make('whatsapp')
+                        \Filament\Actions\Action::make('whatsapp')
                             ->icon('heroicon-m-chat-bubble-left-right')
                             ->color('success')
                             ->tooltip('Kirim pesan WhatsApp / Balas Pesan')

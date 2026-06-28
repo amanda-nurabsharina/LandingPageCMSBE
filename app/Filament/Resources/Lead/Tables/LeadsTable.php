@@ -33,7 +33,7 @@ class LeadsTable
             ])
             ->filters([])
             ->recordActions([
-                \Filament\Tables\Actions\Action::make('whatsapp')
+                \Filament\Actions\Action::make('whatsapp')
                     ->label('Hubungi WA')
                     ->icon('heroicon-m-chat-bubble-left-right')
                     ->color('success')
