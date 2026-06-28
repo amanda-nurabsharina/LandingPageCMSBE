@@ -33,6 +33,25 @@ class LeadsTable
             ])
             ->filters([])
             ->recordActions([
+                \Filament\Tables\Actions\Action::make('whatsapp')
+                    ->label('Hubungi WA')
+                    ->icon('heroicon-m-chat-bubble-left-right')
+                    ->color('success')
+                    ->url(function ($record) {
+                        if (! $record || ! $record->phone) return null;
+                        
+                        // Sanitasi nomor HP
+                        $phone = preg_replace('/[^0-9]/', '', $record->phone);
+                        if (str_starts_with($phone, '0')) {
+                            $phone = '62' . substr($phone, 1);
+                        }
+                        
+                        // Pesan template
+                        $message = "Halo *{$record->name}*,\n\nTerima kasih telah menghubungi kami. Terkait pesan Anda:\n_\"{$record->message}\"_\n\nBerikut tanggapan kami: ";
+                        
+                        return "https://wa.me/{$phone}?text=" . rawurlencode($message);
+                    })
+                    ->openUrlInNewTab(),
                 EditAction::make()->label('Buka Pesan'),
                 DeleteAction::make(),
             ])
