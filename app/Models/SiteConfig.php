@@ -43,6 +43,9 @@ class SiteConfig extends Model
         'service_premium_subtitle',
         'work_steps_title',
         'work_steps_subtitle',
+        'branches_badge',
+        'branches_title',
+        'branches_subtitle',
     ];
 
     protected $attributes = [
@@ -67,5 +70,8 @@ class SiteConfig extends Model
         'service_premium_subtitle' => 'Tailored solutions for every need—whether scaling an enterprise or celebrating a milestone.',
         'work_steps_title' => 'How We Work',
         'work_steps_subtitle' => 'A seamless process designed to save you time and ensure top-quality results',
+        'branches_badge' => 'Lokasi Cabang',
+        'branches_title' => 'Temukan Cabang Terdekat Kami',
+        'branches_subtitle' => 'Kunjungi gerai fisik kami untuk berkonsultasi langsung atau mengambil pesanan Anda.',
     ];
 }

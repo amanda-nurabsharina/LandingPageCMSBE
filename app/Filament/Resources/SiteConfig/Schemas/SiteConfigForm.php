@@ -204,6 +204,24 @@ class SiteConfigForm
                             ->columnSpanFull(),
                     ])
                     ->columnSpanFull(),
+                Section::make('Konten Bagian Peta / Cabang Toko')
+                    ->description('Sesuaikan lencana (badge), judul, dan deskripsi bagian Peta Cabang Toko di landing page.')
+                    ->schema([
+                        TextInput::make('branches_badge')
+                            ->label('Lencana Bagian Cabang (Badge)')
+                            ->default('Lokasi Cabang')
+                            ->required(),
+                        TextInput::make('branches_title')
+                            ->label('Judul Bagian Cabang')
+                            ->default('Temukan Cabang Terdekat Kami')
+                            ->required(),
+                        Textarea::make('branches_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Cabang')
+                            ->default('Kunjungi gerai fisik kami untuk berkonsultasi langsung atau mengambil pesanan Anda.')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
                 Section::make('Pengaturan Warna Tema Landing Page')
                     ->description('Sesuaikan palet warna yang akan digunakan pada landing page Anda.')
                     ->schema([

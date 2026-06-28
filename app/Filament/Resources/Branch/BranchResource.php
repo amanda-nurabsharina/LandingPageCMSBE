@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Filament\Resources\Branch;
+
+use App\Filament\Resources\Branch\Pages\CreateBranch;
+use App\Filament\Resources\Branch\Pages\EditBranch;
+use App\Filament\Resources\Branch\Pages\ListBranches;
+use App\Filament\Resources\Branch\Schemas\BranchForm;
+use App\Filament\Resources\Branch\Tables\BranchesTable;
+use App\Models\Branch;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+
+class BranchResource extends Resource
+{
+    protected static ?string $model = Branch::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedMap;
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+    protected static ?string $navigationLabel = 'Cabang / Lokasi Toko';
+
+    protected static ?string $modelLabel = 'Cabang';
+
+    protected static ?string $pluralModelLabel = 'Cabang / Lokasi Toko';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+
+    protected static ?int $navigationSort = 13;
+
+    public static function form(Schema $schema): Schema
+    {
+        return BranchForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return BranchesTable::configure($table);
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListBranches::route('/'),
+            'create' => CreateBranch::route('/create'),
+            'edit' => EditBranch::route('/{record}/edit'),
+        ];
+    }
+}

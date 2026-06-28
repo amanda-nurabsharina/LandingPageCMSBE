@@ -59,7 +59,28 @@ class LandingPageController extends Controller
             'service_premium_subtitle' => 'Tailored solutions for every need—whether scaling an enterprise or celebrating a milestone.',
             'work_steps_title' => 'How We Work',
             'work_steps_subtitle' => 'A seamless process designed to save you time and ensure top-quality results',
+            'branches_badge' => 'Lokasi Cabang',
+            'branches_title' => 'Temukan Cabang Terdekat Kami',
+            'branches_subtitle' => 'Kunjungi gerai fisik kami untuk berkonsultasi langsung atau mengambil pesanan Anda.',
         ]);
+
+        // Programmatic default filler for existing records
+        $configUpdated = false;
+        if (empty($siteConfig->branches_badge)) {
+            $siteConfig->branches_badge = 'Lokasi Cabang';
+            $configUpdated = true;
+        }
+        if (empty($siteConfig->branches_title)) {
+            $siteConfig->branches_title = 'Temukan Cabang Terdekat Kami';
+            $configUpdated = true;
+        }
+        if (empty($siteConfig->branches_subtitle)) {
+            $siteConfig->branches_subtitle = 'Kunjungi gerai fisik kami untuk berkonsultasi langsung atau mengambil pesanan Anda.';
+            $configUpdated = true;
+        }
+        if ($configUpdated) {
+            $siteConfig->save();
+        }
 
         $heroSection = HeroSection::firstOrCreate([
             'id' => 1
@@ -254,6 +275,11 @@ class LandingPageController extends Controller
             'is_active' => true,
             'sort_order' => 16,
         ]);
+        LandingSection::firstOrCreate(['section_key' => 'branches'], [
+            'title' => 'Lokasi Cabang Kami (Google Maps)',
+            'is_active' => true,
+            'sort_order' => 17,
+        ]);
 
         // If About Items are empty, seed default records
         if (AboutItem::count() === 0) {
@@ -348,6 +374,20 @@ class LandingPageController extends Controller
         $latestNews = \App\Models\News::orderBy('created_at', 'desc')->limit(5)->get();
         $latestActivities = \App\Models\Activity::orderBy('created_at', 'desc')->limit(5)->get();
 
+        if (\App\Models\Branch::count() === 0) {
+            \App\Models\Branch::create([
+                'name' => 'Printhub Jakarta Pusat',
+                'address' => 'Jl. Percetakan Negara Raya No. 12, Cempaka Putih, Jakarta Pusat, 10520',
+                'latitude' => '-6.184323',
+                'longitude' => '106.861234',
+                'phone' => '628123456789',
+                'is_active' => true,
+                'sort_order' => 1
+            ]);
+        }
+
+        $branches = \App\Models\Branch::where('is_active', true)->orderBy('sort_order')->get();
+
         // Consolidated response
         return response()->json([
             'status' => 'success',
@@ -369,6 +409,7 @@ class LandingPageController extends Controller
                 'work_steps' => $workSteps,
                 'news' => $latestNews,
                 'activities' => $latestActivities,
+                'branches' => $branches,
             ]
         ]);
     }
