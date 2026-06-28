@@ -18,6 +18,7 @@ class ServicePremiumsTable
             ->columns([
                 ImageColumn::make('image_path')
                     ->label('Gambar/Ilustrasi')
+                    ->disk('public')
                     ->square(),
                 TextColumn::make('title')
                     ->label('Nama Layanan')

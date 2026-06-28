@@ -18,6 +18,7 @@ class WorkStepsTable
             ->columns([
                 ImageColumn::make('image_path')
                     ->label('Ilustrasi')
+                    ->disk('public')
                     ->circular(),
                 TextColumn::make('title')
                     ->label('Judul Langkah')

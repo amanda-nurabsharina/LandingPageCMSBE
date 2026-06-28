@@ -18,6 +18,7 @@ class PortfoliosTable
             ->columns([
                 ImageColumn::make('image_path')
                     ->label('Gambar')
+                    ->disk('public')
                     ->square(),
                 TextColumn::make('title')
                     ->label('Nama Portofolio')

@@ -62,6 +62,21 @@ class AdminPanelProvider extends PanelProvider
                     </form>
                 ')
             )
+            ->renderHook(
+                PanelsRenderHook::BODY_END,
+                fn (): string => Blade::render('
+                    <script>
+                        function clearTableCheckboxes() {
+                            document.querySelectorAll("table input[type=\'checkbox\']").forEach(cb => {
+                                cb.checked = false;
+                                cb.dispatchEvent(new Event("change", { bubbles: true }));
+                            });
+                        }
+                        window.addEventListener("pageshow", clearTableCheckboxes);
+                        document.addEventListener("livewire:navigated", clearTableCheckboxes);
+                    </script>
+                ')
+            )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
