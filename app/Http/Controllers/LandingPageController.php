@@ -62,6 +62,8 @@ class LandingPageController extends Controller
             'branches_badge' => 'Lokasi Cabang',
             'branches_title' => 'Temukan Cabang Terdekat Kami',
             'branches_subtitle' => 'Kunjungi gerai fisik kami untuk berkonsultasi langsung atau mengambil pesanan Anda.',
+            'clients_title' => 'Klien Kami',
+            'clients_subtitle' => 'Telah dipercaya oleh berbagai perusahaan dan institusi di Indonesia untuk solusi percetakan berkualitas.',
         ]);
 
         // Programmatic default filler for existing records
@@ -76,6 +78,14 @@ class LandingPageController extends Controller
         }
         if (empty($siteConfig->branches_subtitle)) {
             $siteConfig->branches_subtitle = 'Kunjungi gerai fisik kami untuk berkonsultasi langsung atau mengambil pesanan Anda.';
+            $configUpdated = true;
+        }
+        if (empty($siteConfig->clients_title)) {
+            $siteConfig->clients_title = 'Klien Kami';
+            $configUpdated = true;
+        }
+        if (empty($siteConfig->clients_subtitle)) {
+            $siteConfig->clients_subtitle = 'Telah dipercaya oleh berbagai perusahaan dan institusi di Indonesia untuk solusi percetakan berkualitas.';
             $configUpdated = true;
         }
         if ($configUpdated) {
@@ -280,6 +290,11 @@ class LandingPageController extends Controller
             'is_active' => true,
             'sort_order' => 17,
         ]);
+        LandingSection::firstOrCreate(['section_key' => 'clients'], [
+            'title' => 'Daftar Klien Kami (Logos Slider)',
+            'is_active' => true,
+            'sort_order' => 18,
+        ]);
 
         // If About Items are empty, seed default records
         if (AboutItem::count() === 0) {
@@ -388,6 +403,17 @@ class LandingPageController extends Controller
 
         $branches = \App\Models\Branch::where('is_active', true)->orderBy('sort_order')->get();
 
+        if (\App\Models\Client::count() === 0) {
+            \App\Models\Client::create([
+                'name' => 'Maju Jaya Company',
+                'logo' => 'clients/default.png',
+                'website_url' => 'https://google.com',
+                'is_active' => true,
+                'sort_order' => 1
+            ]);
+        }
+        $clients = \App\Models\Client::where('is_active', true)->orderBy('sort_order')->get();
+
         // Consolidated response
         return response()->json([
             'status' => 'success',
@@ -410,6 +436,7 @@ class LandingPageController extends Controller
                 'news' => $latestNews,
                 'activities' => $latestActivities,
                 'branches' => $branches,
+                'clients' => $clients,
             ]
         ]);
     }

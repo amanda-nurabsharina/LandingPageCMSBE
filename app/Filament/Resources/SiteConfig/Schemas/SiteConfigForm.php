@@ -222,6 +222,20 @@ class SiteConfigForm
                             ->columnSpanFull(),
                     ])
                     ->columnSpanFull(),
+                Section::make('Konten Bagian Klien Kami / Our Clients')
+                    ->description('Sesuaikan judul dan deskripsi bagian Klien Kami di landing page.')
+                    ->schema([
+                        TextInput::make('clients_title')
+                            ->label('Judul Bagian Klien')
+                            ->default('Klien Kami')
+                            ->required(),
+                        Textarea::make('clients_subtitle')
+                            ->label('Deskripsi / Subjudul Bagian Klien')
+                            ->default('Telah dipercaya oleh berbagai perusahaan dan institusi di Indonesia untuk solusi percetakan berkualitas.')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
                 Section::make('Pengaturan Warna Tema Landing Page')
                     ->description('Sesuaikan palet warna yang akan digunakan pada landing page Anda.')
                     ->schema([

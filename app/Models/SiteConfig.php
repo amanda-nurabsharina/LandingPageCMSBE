@@ -46,6 +46,8 @@ class SiteConfig extends Model
         'branches_badge',
         'branches_title',
         'branches_subtitle',
+        'clients_title',
+        'clients_subtitle',
     ];
 
     protected $attributes = [
@@ -73,5 +75,7 @@ class SiteConfig extends Model
         'branches_badge' => 'Lokasi Cabang',
         'branches_title' => 'Temukan Cabang Terdekat Kami',
         'branches_subtitle' => 'Kunjungi gerai fisik kami untuk berkonsultasi langsung atau mengambil pesanan Anda.',
+        'clients_title' => 'Klien Kami',
+        'clients_subtitle' => 'Telah dipercaya oleh berbagai perusahaan dan institusi di Indonesia untuk solusi percetakan berkualitas.',
     ];
 }
