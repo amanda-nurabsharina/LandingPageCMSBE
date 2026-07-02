@@ -26,9 +26,9 @@ class PortfolioResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Portofolio';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Layanan & Portofolio';
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $recordTitleAttribute = 'title';
 

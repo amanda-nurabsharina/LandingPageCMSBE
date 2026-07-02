@@ -26,9 +26,9 @@ class WorkStepResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Langkah Kerja';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Layanan & Portofolio';
 
-    protected static ?int $navigationSort = 7;
+    protected static ?int $navigationSort = 5;
 
     public static function form(Schema $schema): Schema
     {

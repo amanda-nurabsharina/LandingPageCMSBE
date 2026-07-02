@@ -26,7 +26,7 @@ class WhyChooseUsResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Keunggulan';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Profil Perusahaan';
 
     protected static ?int $navigationSort = 2;
 

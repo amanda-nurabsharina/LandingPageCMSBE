@@ -35,6 +35,16 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => '#3c7618',
             ])
+            ->navigationGroups([
+                'Hero',
+                'Profil Perusahaan',
+                'Layanan & Portofolio',
+                'Testimoni & Klien',
+                'Konten & Promosi',
+                'Pengaturan',
+                'ERP & Keuangan',
+                'Manajemen Pengguna',
+            ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([

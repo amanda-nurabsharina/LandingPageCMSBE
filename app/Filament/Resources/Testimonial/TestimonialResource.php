@@ -26,9 +26,9 @@ class TestimonialResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Testimoni';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Testimoni & Klien';
 
-    protected static ?int $navigationSort = 8;
+    protected static ?int $navigationSort = 1;
 
     protected static ?string $recordTitleAttribute = 'client_name';
 

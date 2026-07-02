@@ -25,9 +25,9 @@ class LandingSectionResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Urutan Menu';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan';
 
-    protected static ?int $navigationSort = 13;
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $recordTitleAttribute = 'title';
 

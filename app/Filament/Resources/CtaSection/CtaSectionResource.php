@@ -26,9 +26,9 @@ class CtaSectionResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Banner CTA';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Konten & Promosi';
 
-    protected static ?int $navigationSort = 11;
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $recordTitleAttribute = 'title';
 

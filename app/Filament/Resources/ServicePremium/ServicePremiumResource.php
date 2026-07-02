@@ -26,9 +26,9 @@ class ServicePremiumResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Layanan Premium';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Layanan & Portofolio';
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {

@@ -26,7 +26,7 @@ class StatisticResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Statistik';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Profil Perusahaan';
 
     protected static ?int $navigationSort = 3;
 

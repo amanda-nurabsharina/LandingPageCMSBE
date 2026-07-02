@@ -28,9 +28,9 @@ class ActivityResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Aktifitas';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Konten & Promosi';
 
-    protected static ?int $navigationSort = 10;
+    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {

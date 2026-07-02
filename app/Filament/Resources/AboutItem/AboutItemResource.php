@@ -26,9 +26,9 @@ class AboutItemResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Tentang Kami';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Profil Perusahaan';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
     {

@@ -26,9 +26,9 @@ class ServiceResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Layanan';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Layanan & Portofolio';
 
-    protected static ?int $navigationSort = 4;
+    protected static ?int $navigationSort = 1;
 
     protected static ?string $recordTitleAttribute = 'title';
 

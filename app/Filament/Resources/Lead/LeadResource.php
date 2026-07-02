@@ -27,7 +27,7 @@ class LeadResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Leads / Pesan Masuk';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = null;
 
     protected static ?int $navigationSort = 12;
 

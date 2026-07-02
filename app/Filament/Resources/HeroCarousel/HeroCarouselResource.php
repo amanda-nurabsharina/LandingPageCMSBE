@@ -26,7 +26,7 @@ class HeroCarouselResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Hero with Carousel';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Hero';
 
     protected static ?int $navigationSort = 3;
 

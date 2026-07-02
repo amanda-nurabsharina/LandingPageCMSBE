@@ -28,9 +28,9 @@ class BranchResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Cabang / Lokasi Toko';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan';
 
-    protected static ?int $navigationSort = 13;
+    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {

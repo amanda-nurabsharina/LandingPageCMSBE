@@ -26,7 +26,7 @@ class HeroSectionResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Basic Hero';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Hero';
 
     protected static ?int $navigationSort = 1;
 

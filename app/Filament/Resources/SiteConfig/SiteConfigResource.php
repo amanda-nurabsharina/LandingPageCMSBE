@@ -26,9 +26,9 @@ class SiteConfigResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Pengaturan';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan Landing Page';
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan';
 
-    protected static ?int $navigationSort = 14;
+    protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
     {
